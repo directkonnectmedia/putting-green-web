@@ -1,0 +1,26 @@
+{
+  "name": "landscape-website-template",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Reusable Next.js template for landscaping company websites.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@teleporthq/react-components": "latest",
+    "dangerous-html": "0.1.13",
+    "framer-motion": "^6.5.1",
+    "next": "^12.1.10",
+    "next-intl": "2.10.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "engines": {
+    "node": ">=18.x"
+  }
+}

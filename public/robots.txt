@@ -1,0 +1,7 @@
+User-agent: Googlebot
+Disallow: /nogooglebot/
+
+User-agent: *
+Allow: /
+
+Sitemap: https://substantial-golden-peafowl-ly89h7.teleporthq.site/sitemap.xml
