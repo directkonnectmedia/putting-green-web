@@ -10,6 +10,7 @@ import Footer from '../components/footer'
 import BookingWizard from '../components/booking-wizard'
 import ReviewsCarousel from '../components/reviews-carousel'
 import GallerySection from '../components/gallery-section'
+import GravelColors from '../components/gravel-colors'
 import SITE from '../lib/site-config'
 
 const fadeUp = {
@@ -152,6 +153,7 @@ const Home = (props) => {
             </div>
           </div>
         </section>
+        <GravelColors />
         <GallerySection />
         <section id="reviews" className="reviews-section">
           <div className="reviews-container">
