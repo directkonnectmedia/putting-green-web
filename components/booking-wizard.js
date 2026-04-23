@@ -9,7 +9,81 @@ const SERVICES = [
   { value: 'other', label: 'Something Else', desc: 'Tell us what you need' },
 ]
 
-const STEPS = ['Service', 'Project', 'Contact', 'Review']
+const STEPS = ['Service', 'Details', 'Project', 'Contact', 'Review']
+
+// Option sets for the service-specific Details step.
+const SG_AREA = [
+  { v: 'lt-500', l: 'Under 500 sq ft' },
+  { v: '500-1000', l: '500\u20131,000 sq ft' },
+  { v: '1000-2000', l: '1,000\u20132,000 sq ft' },
+  { v: 'gt-2000', l: 'Over 2,000 sq ft' },
+  { v: 'unsure', l: 'Not sure' },
+]
+const SG_LOCATION = [
+  { v: 'front', l: 'Front yard' },
+  { v: 'back', l: 'Back yard' },
+  { v: 'both', l: 'Both' },
+]
+const SG_USE = [
+  { v: 'pets', l: 'Pets' },
+  { v: 'kids', l: 'Kids / play' },
+  { v: 'decorative', l: 'Decorative only' },
+  { v: 'mixed', l: 'Mix of above' },
+]
+const SG_EXISTING = [
+  { v: 'dirt', l: 'Bare dirt' },
+  { v: 'live-grass', l: 'Live grass' },
+  { v: 'dead-grass', l: 'Dead / patchy grass' },
+  { v: 'old-turf', l: 'Old synthetic turf' },
+  { v: 'pavers', l: 'Pavers / concrete' },
+]
+
+const PG_SIZE = [
+  { v: 'small', l: 'Small (under 300 sq ft)' },
+  { v: 'medium', l: 'Medium (300\u2013800 sq ft)' },
+  { v: 'large', l: 'Large (800+ sq ft)' },
+  { v: 'unsure', l: 'Not sure' },
+]
+const PG_CUPS = [
+  { v: '1', l: '1' },
+  { v: '2', l: '2' },
+  { v: '3', l: '3' },
+  { v: '4+', l: '4+' },
+]
+const YES_NO = [
+  { v: 'yes', l: 'Yes' },
+  { v: 'no', l: 'No' },
+]
+
+const GV_COLORS = [
+  { v: 'gray', l: 'Gray', img: '/photos/gravel-gray.jpg' },
+  { v: 'beige', l: 'Beige', img: '/photos/gravel-beige.jpg' },
+  { v: 'red', l: 'Red', img: '/photos/gravel-red.jpg' },
+  { v: 'mix', l: 'Decorative Mix', img: '/photos/gravel-mix.jpg' },
+]
+const GV_SIZE = [
+  { v: '1/4"', l: '\u00bc" (fine)' },
+  { v: '3/8"', l: '\u215c"' },
+  { v: '1/2"', l: '\u00bd"' },
+  { v: '3/4"', l: '\u00be" (driveway)' },
+  { v: 'unsure', l: 'Not sure' },
+]
+const GV_APPLICATION = [
+  { v: 'bed', l: 'Decorative bed' },
+  { v: 'driveway', l: 'Driveway' },
+  { v: 'full-yard', l: 'Full yard' },
+]
+const GV_DELIVERY = [
+  { v: 'delivery-only', l: 'Delivery only' },
+  { v: 'delivery-install', l: 'Delivery + spread/install' },
+]
+
+const TIMELINE = [
+  { v: 'asap', l: 'As soon as possible' },
+  { v: '1-month', l: 'Within 1 month' },
+  { v: '3-months', l: 'Within 3 months' },
+  { v: 'flexible', l: 'Flexible / no rush' },
+]
 
 const stepVariants = {
   enter: (direction) => ({
@@ -33,23 +107,59 @@ const formatPhone = (value) => {
   return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`
 }
 
+// Reusable single-select pill group. Re-clicking the selected option clears it.
+function OptionGroup({ label, options, value, onChange }) {
+  return (
+    <div className="bw-option-group">
+      <span className="bw-option-label">{label}</span>
+      <div className="bw-option-row">
+        {options.map((o) => {
+          const selected = value === o.v
+          return (
+            <button
+              key={o.v}
+              type="button"
+              className={`bw-pill ${selected ? 'is-selected' : ''}`}
+              aria-pressed={selected}
+              onClick={() => onChange(selected ? '' : o.v)}
+            >
+              {o.l}
+            </button>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
 export default function BookingWizard() {
   const [step, setStep] = useState(0)
   const [direction, setDirection] = useState(1)
   const [submitted, setSubmitted] = useState(false)
   const [data, setData] = useState({
     services: [],
-    details: '',
-    firstName: '',
-    lastName: '',
-    phone: '',
-    email: '',
+    // Synthetic grass
+    sg_area: '', sg_location: '', sg_use: '', sg_existing: '',
+    // Putting green
+    pg_size: '', pg_cups: '', pg_fringe: '', pg_bunkers: '',
+    // Gravel
+    gv_color: '', gv_size: '', gv_application: '', gv_quantity: '',
+    gv_removal: '', gv_delivery: '',
+    // Other (freeform)
+    other_desc: '',
+    // Project
+    timeline: '',
+    notes: '',
+    // Contact
+    firstName: '', lastName: '', phone: '', email: '',
   })
 
   const update = (key) => (e) => {
     const value = key === 'phone' ? formatPhone(e.target.value) : e.target.value
     setData((d) => ({ ...d, [key]: value }))
   }
+
+  const setField = (key, value) => setData((d) => ({ ...d, [key]: value }))
 
   const toggleService = (value) => {
     setData((d) => ({
@@ -67,11 +177,54 @@ export default function BookingWizard() {
 
   const canAdvance = () => {
     if (step === 0) return data.services.length > 0
-    if (step === 1) return true
-    if (step === 2) {
+    if (step === 1) return true // Details step — all fields optional
+    if (step === 2) return true // Project step — all fields optional
+    if (step === 3) {
       return data.firstName.trim() && data.lastName.trim() && data.phone.replace(/\D/g, '').length === 10 && /.+@.+\..+/.test(data.email)
     }
     return true
+  }
+
+  const has = (service) => data.services.includes(service)
+
+  const labelFor = (list, v) => list.find((x) => x.v === v)?.l || ''
+
+  const buildDetailsSummary = () => {
+    const blocks = []
+    if (has('synthetic-grass')) {
+      const lines = []
+      if (data.sg_area) lines.push(`Area: ${labelFor(SG_AREA, data.sg_area)}`)
+      if (data.sg_location) lines.push(`Location: ${labelFor(SG_LOCATION, data.sg_location)}`)
+      if (data.sg_use) lines.push(`Primary use: ${labelFor(SG_USE, data.sg_use)}`)
+      if (data.sg_existing) lines.push(`Existing surface: ${labelFor(SG_EXISTING, data.sg_existing)}`)
+      if (lines.length) blocks.push(`SYNTHETIC GRASS\n${lines.map((l) => `- ${l}`).join('\n')}`)
+    }
+    if (has('putting-green')) {
+      const lines = []
+      if (data.pg_size) lines.push(`Green size: ${labelFor(PG_SIZE, data.pg_size)}`)
+      if (data.pg_cups) lines.push(`Cups: ${data.pg_cups}`)
+      if (data.pg_fringe) lines.push(`Fringe / chipping area: ${labelFor(YES_NO, data.pg_fringe)}`)
+      if (data.pg_bunkers) lines.push(`Bunkers / slopes / tiers: ${labelFor(YES_NO, data.pg_bunkers)}`)
+      if (lines.length) blocks.push(`PUTTING GREEN\n${lines.map((l) => `- ${l}`).join('\n')}`)
+    }
+    if (has('gravel')) {
+      const lines = []
+      if (data.gv_color) lines.push(`Color: ${labelFor(GV_COLORS, data.gv_color)}`)
+      if (data.gv_size) lines.push(`Size: ${labelFor(GV_SIZE, data.gv_size)}`)
+      if (data.gv_application) lines.push(`Application: ${labelFor(GV_APPLICATION, data.gv_application)}`)
+      if (data.gv_quantity) lines.push(`Quantity: ${data.gv_quantity}`)
+      if (data.gv_removal) lines.push(`Existing rock/grass to remove: ${labelFor(YES_NO, data.gv_removal)}`)
+      if (data.gv_delivery) lines.push(`Service: ${labelFor(GV_DELIVERY, data.gv_delivery)}`)
+      if (lines.length) blocks.push(`GRAVEL\n${lines.map((l) => `- ${l}`).join('\n')}`)
+    }
+    if (has('other') && data.other_desc.trim()) {
+      blocks.push(`OTHER\n- ${data.other_desc.trim()}`)
+    }
+    const projectLines = []
+    if (data.timeline) projectLines.push(`Timeline: ${labelFor(TIMELINE, data.timeline)}`)
+    if (data.notes.trim()) projectLines.push(`Notes: ${data.notes.trim()}`)
+    if (projectLines.length) blocks.push(`PROJECT\n${projectLines.map((l) => `- ${l}`).join('\n')}`)
+    return blocks.join('\n\n')
   }
 
   const onSubmit = async (e) => {
@@ -90,7 +243,7 @@ export default function BookingWizard() {
     fd.append(GOOGLE_FORM.fields.phone, data.phone)
     fd.append(GOOGLE_FORM.fields.email, data.email)
     fd.append(GOOGLE_FORM.fields.services, selectedLabels)
-    fd.append(GOOGLE_FORM.fields.details, data.details || '')
+    fd.append(GOOGLE_FORM.fields.details, buildDetailsSummary())
 
     // Google Forms rejects CORS preflights, so we fire-and-forget with
     // `no-cors`. The response is opaque but the submission still lands in
@@ -226,20 +379,174 @@ export default function BookingWizard() {
 
                 {step === 1 && (
                   <div className="bw-field-block">
-                    <label className="bw-step-heading" htmlFor="bw-details">Tell us about your project</label>
-                    <p className="bw-helper">Optional — share goals, timeline, square footage, or anything you want us to know.</p>
-                    <textarea
-                      id="bw-details"
-                      className="bw-textarea"
-                      rows="6"
-                      placeholder="e.g. backyard putting green with 3 holes, or 800 sq ft of synthetic grass, hoping to start in June..."
-                      value={data.details}
-                      onChange={update('details')}
-                    />
+                    <label className="bw-step-heading">A few details so we can prep your quote</label>
+                    <p className="bw-helper">Everything here is optional. Skip anything you&apos;re not sure about.</p>
+
+                    {has('synthetic-grass') && (
+                      <section className="bw-detail-section">
+                        <h4 className="bw-detail-heading">Synthetic Grass</h4>
+                        <OptionGroup
+                          label="Approximate area"
+                          options={SG_AREA}
+                          value={data.sg_area}
+                          onChange={(v) => setField('sg_area', v)}
+                        />
+                        <OptionGroup
+                          label="Location"
+                          options={SG_LOCATION}
+                          value={data.sg_location}
+                          onChange={(v) => setField('sg_location', v)}
+                        />
+                        <OptionGroup
+                          label="Primary use"
+                          options={SG_USE}
+                          value={data.sg_use}
+                          onChange={(v) => setField('sg_use', v)}
+                        />
+                        <OptionGroup
+                          label="Existing surface"
+                          options={SG_EXISTING}
+                          value={data.sg_existing}
+                          onChange={(v) => setField('sg_existing', v)}
+                        />
+                      </section>
+                    )}
+
+                    {has('putting-green') && (
+                      <section className="bw-detail-section">
+                        <h4 className="bw-detail-heading">Backyard Putting Green</h4>
+                        <OptionGroup
+                          label="Approximate green size"
+                          options={PG_SIZE}
+                          value={data.pg_size}
+                          onChange={(v) => setField('pg_size', v)}
+                        />
+                        <OptionGroup
+                          label="Number of cups"
+                          options={PG_CUPS}
+                          value={data.pg_cups}
+                          onChange={(v) => setField('pg_cups', v)}
+                        />
+                        <OptionGroup
+                          label="Want a fringe / chipping area?"
+                          options={YES_NO}
+                          value={data.pg_fringe}
+                          onChange={(v) => setField('pg_fringe', v)}
+                        />
+                        <OptionGroup
+                          label="Interested in bunkers, slopes, or tiers?"
+                          options={YES_NO}
+                          value={data.pg_bunkers}
+                          onChange={(v) => setField('pg_bunkers', v)}
+                        />
+                      </section>
+                    )}
+
+                    {has('gravel') && (
+                      <section className="bw-detail-section">
+                        <h4 className="bw-detail-heading">Gravel</h4>
+                        <div className="bw-option-group">
+                          <span className="bw-option-label">Color</span>
+                          <div className="bw-color-grid">
+                            {GV_COLORS.map((c) => {
+                              const selected = data.gv_color === c.v
+                              return (
+                                <button
+                                  key={c.v}
+                                  type="button"
+                                  className={`bw-color-tile ${selected ? 'is-selected' : ''}`}
+                                  aria-pressed={selected}
+                                  onClick={() => setField('gv_color', selected ? '' : c.v)}
+                                >
+                                  <span
+                                    className="bw-color-swatch"
+                                    style={{ backgroundImage: `url(${c.img})` }}
+                                    aria-hidden="true"
+                                  />
+                                  <span className="bw-color-name">{c.l}</span>
+                                </button>
+                              )
+                            })}
+                          </div>
+                        </div>
+                        <OptionGroup
+                          label="Size"
+                          options={GV_SIZE}
+                          value={data.gv_size}
+                          onChange={(v) => setField('gv_size', v)}
+                        />
+                        <OptionGroup
+                          label="Application"
+                          options={GV_APPLICATION}
+                          value={data.gv_application}
+                          onChange={(v) => setField('gv_application', v)}
+                        />
+                        <div className="bw-option-group">
+                          <label className="bw-option-label" htmlFor="bw-gv-quantity">How much do you need?</label>
+                          <input
+                            id="bw-gv-quantity"
+                            className="bw-inline-input"
+                            type="text"
+                            placeholder="e.g. 3 tons, a few cubic yards, enough for a 200 sq ft bed..."
+                            value={data.gv_quantity}
+                            onChange={update('gv_quantity')}
+                          />
+                        </div>
+                        <OptionGroup
+                          label="Existing rock or grass to remove?"
+                          options={YES_NO}
+                          value={data.gv_removal}
+                          onChange={(v) => setField('gv_removal', v)}
+                        />
+                        <OptionGroup
+                          label="Service needed"
+                          options={GV_DELIVERY}
+                          value={data.gv_delivery}
+                          onChange={(v) => setField('gv_delivery', v)}
+                        />
+                      </section>
+                    )}
+
+                    {has('other') && (
+                      <section className="bw-detail-section">
+                        <h4 className="bw-detail-heading">Tell us what you need</h4>
+                        <textarea
+                          className="bw-textarea"
+                          rows="4"
+                          placeholder="Describe what you're looking for..."
+                          value={data.other_desc}
+                          onChange={update('other_desc')}
+                        />
+                      </section>
+                    )}
                   </div>
                 )}
 
                 {step === 2 && (
+                  <div className="bw-field-block">
+                    <label className="bw-step-heading">Project timeline</label>
+                    <p className="bw-helper">Optional — helps us schedule realistically.</p>
+                    <OptionGroup
+                      label="When would you like the work done?"
+                      options={TIMELINE}
+                      value={data.timeline}
+                      onChange={(v) => setField('timeline', v)}
+                    />
+                    <div className="bw-option-group">
+                      <label className="bw-option-label" htmlFor="bw-notes">Anything else we should know?</label>
+                      <textarea
+                        id="bw-notes"
+                        className="bw-textarea"
+                        rows="4"
+                        placeholder="HOA, access constraints, inspiration photos in your head, special requests..."
+                        value={data.notes}
+                        onChange={update('notes')}
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {step === 3 && (
                   <div className="bw-field-block">
                     <label className="bw-step-heading">How can we reach you?</label>
                     <div className="bw-row">
@@ -265,7 +572,7 @@ export default function BookingWizard() {
                   </div>
                 )}
 
-                {step === 3 && (
+                {step === 4 && (
                   <div className="bw-field-block">
                     <label className="bw-step-heading">Looks good?</label>
                     <p className="bw-helper">Double-check your details, then send it over.</p>
@@ -280,7 +587,16 @@ export default function BookingWizard() {
                           </div>
                         </dd>
                       </div>
-                      <div><dt>Project</dt><dd>{data.details || <span className="bw-muted">—</span>}</dd></div>
+                      <div>
+                        <dt>Details</dt>
+                        <dd>
+                          {buildDetailsSummary() ? (
+                            <pre className="bw-review-pre">{buildDetailsSummary()}</pre>
+                          ) : (
+                            <span className="bw-muted">—</span>
+                          )}
+                        </dd>
+                      </div>
                       <div><dt>Name</dt><dd>{data.firstName} {data.lastName}</dd></div>
                       <div><dt>Phone</dt><dd>{data.phone}</dd></div>
                       <div><dt>Email</dt><dd>{data.email}</dd></div>
@@ -509,6 +825,126 @@ export default function BookingWizard() {
           flex-wrap: wrap;
           gap: 6px;
         }
+        .bw-review-pre {
+          margin: 0;
+          font-family: var(--font-family-body);
+          font-size: 0.88rem;
+          line-height: 1.55;
+          white-space: pre-wrap;
+          color: var(--color-on-surface);
+        }
+        .bw-detail-section {
+          padding: var(--spacing-md) 0;
+          border-top: 1px dashed var(--color-border);
+          display: flex;
+          flex-direction: column;
+          gap: var(--spacing-md);
+        }
+        .bw-detail-section:first-of-type {
+          border-top: none;
+          padding-top: 0;
+        }
+        .bw-detail-heading {
+          margin: 0;
+          font-family: var(--font-family-heading);
+          font-size: 1.05rem;
+          font-weight: 600;
+          color: var(--color-primary);
+          letter-spacing: 0.02em;
+        }
+        .bw-option-group {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+        .bw-option-label {
+          font-size: 0.78rem;
+          font-weight: 600;
+          color: var(--color-on-surface-secondary);
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+        .bw-option-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+        .bw-pill {
+          padding: 8px 14px;
+          border-radius: 999px;
+          border: 1.5px solid var(--color-border);
+          background: var(--color-surface);
+          color: var(--color-on-surface);
+          font-size: 0.88rem;
+          font-weight: 500;
+          font-family: var(--font-family-body);
+          cursor: pointer;
+          transition: all 0.18s ease;
+        }
+        .bw-pill:hover {
+          border-color: var(--color-primary);
+          color: var(--color-primary);
+        }
+        .bw-pill.is-selected {
+          background: var(--color-primary);
+          border-color: var(--color-primary);
+          color: var(--color-on-primary, #fff);
+        }
+        .bw-inline-input {
+          padding: 12px 14px;
+          border: 1.5px solid var(--color-border);
+          border-radius: var(--border-radius-sm);
+          font-family: var(--font-family-body);
+          font-size: 0.95rem;
+          background: var(--color-surface);
+          color: var(--color-on-surface);
+          width: 100%;
+        }
+        .bw-inline-input:focus {
+          outline: none;
+          border-color: var(--color-primary);
+          box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 15%, transparent);
+        }
+        .bw-color-grid {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 10px;
+        }
+        .bw-color-tile {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 6px;
+          padding: 6px;
+          background: var(--color-surface);
+          border: 2px solid var(--color-border);
+          border-radius: var(--border-radius-sm);
+          cursor: pointer;
+          transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+          font: inherit;
+        }
+        .bw-color-tile:hover {
+          border-color: var(--color-primary);
+          transform: translateY(-2px);
+        }
+        .bw-color-tile.is-selected {
+          border-color: var(--color-primary);
+          box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 22%, transparent);
+        }
+        .bw-color-swatch {
+          display: block;
+          height: 72px;
+          border-radius: 4px;
+          background-size: cover;
+          background-position: center;
+        }
+        .bw-color-name {
+          text-align: center;
+          font-size: 0.82rem;
+          font-weight: 600;
+          color: var(--color-on-surface);
+        }
         .bw-chip {
           display: inline-block;
           padding: 4px 10px;
@@ -674,6 +1110,9 @@ export default function BookingWizard() {
           }
           .bw-stage {
             min-height: 340px;
+          }
+          .bw-color-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
           }
         }
       `}</style>
