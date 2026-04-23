@@ -2,12 +2,12 @@ import React from 'react'
 import Link from 'next/link'
 
 const FEATURED = [
-  { src: '/photos/photo-01.jpg', name: 'Backyard Putting Green' },
-  { src: '/photos/photo-02.jpg', name: 'Synthetic Grass Install' },
-  { src: '/photos/photo-03.jpg', name: 'Pet-Friendly Turf' },
-  { src: '/photos/photo-04.jpg', name: 'Decorative Gravel Beds' },
-  { src: '/photos/photo-05.jpg', name: 'Multi-Hole Practice Green' },
-  { src: '/photos/photo-06.jpg', name: 'Driveway Gravel' },
+  { src: '/photos/pg-01.jpg', name: 'Backyard Putting Green' },
+  { src: '/photos/pg-06.jpg', name: 'Desert Putting Green with Palms' },
+  { src: '/photos/pg-08.jpg', name: 'Multi-Hole Practice Green' },
+  { src: '/photos/pg-09.jpg', name: 'Front Yard Synthetic Grass' },
+  { src: '/photos/pg-07.jpg', name: 'Residential Turf Install' },
+  { src: '/photos/pg-10.jpg', name: 'Synthetic Lawn with Gravel Border' },
 ]
 
 export default function GallerySection() {

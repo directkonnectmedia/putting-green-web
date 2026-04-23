@@ -9,19 +9,19 @@ import SITE from '../lib/site-config'
 const SERVICES = [
   {
     title: 'Backyard Putting Greens',
-    image: '/photos/photo-05.jpg',
+    image: '/photos/pg-04.jpg',
     description:
       'Turn your yard into your own practice course. We design and install custom synthetic putting greens tailored to your space \u2014 true roll, realistic speed, and full control over shape, hole count, and fringe. Built with premium American-made turf that stands up to the Phoenix heat and looks pristine year-round. Kid-friendly, pet-friendly, and virtually maintenance-free.',
   },
   {
     title: 'Synthetic Grass Installation',
-    image: '/photos/photo-03.jpg',
+    image: '/photos/pg-05.jpg',
     description:
       'Ditch the water bill and the weekend mowing. Our synthetic lawns use high-quality American-made, brand-new turf that looks and feels like the real thing \u2014 soft enough for bare feet and kids\u2019 play, tough enough for dogs, and green 365 days a year. Affordable pricing, clean installation, and pet-safe infill options included on every job.',
   },
   {
     title: 'Gravel Spreading & Installation',
-    image: '/photos/photo-32.jpg',
+    image: '/photos/pg-10.jpg',
     description:
       'Professional gravel for driveways, yards, and landscape beds. We carry multiple sizes \u2014 \u00bc\u201d fine, \u215c\u201d, \u00bd\u201d, and \u00be\u201d for driveways \u2014 in a full range of colors including gray, beige, red, and decorative mixes. Delivery and installation available. Affordable local service throughout the Phoenix area.',
   },

@@ -45,23 +45,27 @@ const DESCRIPTIONS = {
   ],
 }
 
-const PHOTO_NUMBERS = [
-  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-  21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38,
-  39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 50, 51, 52, 53, 54, 55, 56, 57,
-  58, 60, 61, 62, 63, 64, 66,
+// Hand-curated from Putting Green's real install photos. Add more here as
+// Alejandro sends them; each entry just needs src + category.
+const PROJECT_PHOTOS = [
+  { n: '01', category: 'putting' },
+  { n: '04', category: 'putting' },
+  { n: '06', category: 'putting' },
+  { n: '08', category: 'putting' },
+  { n: '02', category: 'turf' },
+  { n: '03', category: 'turf' },
+  { n: '05', category: 'turf' },
+  { n: '07', category: 'turf' },
+  { n: '09', category: 'turf' },
+  { n: '10', category: 'gravel' },
 ]
 
-const CATEGORY_CYCLE = ['putting', 'turf', 'gravel']
-
-const PROJECTS = PHOTO_NUMBERS.map((n, i) => {
-  const category = CATEGORY_CYCLE[i % CATEGORY_CYCLE.length]
+const PROJECTS = PROJECT_PHOTOS.map(({ n, category }, i) => {
   const descList = DESCRIPTIONS[category]
-  const description = descList[Math.floor(i / CATEGORY_CYCLE.length) % descList.length]
-  const pad = String(n).padStart(2, '0')
+  const description = descList[i % descList.length]
   return {
-    id: `p${pad}`,
-    src: `/photos/photo-${pad}.jpg`,
+    id: `pg${n}`,
+    src: `/photos/pg-${n}.jpg`,
     category,
     categoryLabel: CATEGORY_LABEL[category],
     description,

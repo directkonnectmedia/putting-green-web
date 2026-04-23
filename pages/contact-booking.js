@@ -25,8 +25,8 @@ const ContactBooking = (props) => {
         <section className="booking-hero">
           <div className="booking-hero__media">
             <img
-              src="https://images.pexels.com/photos/9173338/pexels-photo-9173338.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1500"
-              alt="Luxurious Arizona backyard at golden hour"
+              src="/photos/pg-04.jpg"
+              alt="Poolside backyard putting green in Phoenix, Arizona"
               className="booking-hero__image"
             />
             <div className="booking-hero__overlay"></div>

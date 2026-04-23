@@ -60,7 +60,7 @@ const Home = (props) => {
                    slowZoom animation for videos.
             */}
             <img
-              src="/photos/photo-07.jpg"
+              src="/photos/pg-02.jpg"
               alt=""
               className="hero-bg-image"
               aria-hidden="true"
@@ -112,7 +112,7 @@ const Home = (props) => {
             </div>
             <div id="servicesCarousel" className="services-carousel">
               <div className="services-carousel__track">
-                <div className="services-slide is-active" data-slide="0" style={{ backgroundImage: "url(/photos/photo-05.jpg)" }}>
+                <div className="services-slide is-active" data-slide="0" style={{ backgroundImage: "url(/photos/pg-01.jpg)" }}>
                   <div className="services-slide__overlay"></div>
                   <div className="services-slide__content">
                     <span className="services-slide__eyebrow">01 / Signature Service</span>
@@ -121,7 +121,7 @@ const Home = (props) => {
                     <a href="#booking" className="services-slide__cta"><span>Get a Quote</span></a>
                   </div>
                 </div>
-                <div className="services-slide" data-slide="1" style={{ backgroundImage: "url(/photos/photo-03.jpg)" }}>
+                <div className="services-slide" data-slide="1" style={{ backgroundImage: "url(/photos/pg-05.jpg)" }}>
                   <div className="services-slide__overlay"></div>
                   <div className="services-slide__content">
                     <span className="services-slide__eyebrow">02 / Turf &amp; Lawns</span>
@@ -130,7 +130,7 @@ const Home = (props) => {
                     <a href="#booking" className="services-slide__cta"><span>Get a Quote</span></a>
                   </div>
                 </div>
-                <div className="services-slide" data-slide="2" style={{ backgroundImage: "url(/photos/photo-32.jpg)" }}>
+                <div className="services-slide" data-slide="2" style={{ backgroundImage: "url(/photos/pg-10.jpg)" }}>
                   <div className="services-slide__overlay"></div>
                   <div className="services-slide__content">
                     <span className="services-slide__eyebrow">03 / Hardscape</span>
@@ -274,7 +274,7 @@ const Home = (props) => {
               viewport={{ once: true, amount: 0.25 }}
             >
               <img
-                src="/photos/photo-07.jpg"
+                src="/photos/pg-01.jpg"
                 alt="Putting Green synthetic turf installation in Phoenix"
                 className="why-image"
               />
