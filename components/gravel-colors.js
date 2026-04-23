@@ -1,38 +1,28 @@
 import React, { useRef } from 'react'
 
-// Hex tones chosen to read as natural stone. Texture is CSS-only until
-// real gravel sample photos are available.
 const COLORS = [
   {
     name: 'Gray',
     blurb: 'Clean, classic, works with every palette.',
-    base: '#8a8a8a',
-    light: '#b8b8b8',
-    dark: '#5e5e5e',
+    image: '/photos/gravel-gray.jpg',
     sizes: ['1/4"', '3/8"', '1/2"', '3/4"'],
   },
   {
     name: 'Beige',
     blurb: 'Warm desert neutral for courtyards and beds.',
-    base: '#c2a87e',
-    light: '#e2cc9f',
-    dark: '#8c7349',
+    image: '/photos/gravel-beige.jpg',
     sizes: ['1/4"', '3/8"', '1/2"'],
   },
   {
     name: 'Red',
     blurb: 'Rich rust tone that pops against green.',
-    base: '#a64c38',
-    light: '#d07560',
-    dark: '#723222',
+    image: '/photos/gravel-red.jpg',
     sizes: ['1/4"', '3/8"', '1/2"'],
   },
   {
     name: 'Decorative Mix',
     blurb: 'Custom blends of complementary tones.',
-    base: '#9d8567',
-    light: '#d9c6a2',
-    dark: '#5c4532',
+    image: '/photos/gravel-mix.jpg',
     sizes: ['Custom blends'],
   },
 ]
@@ -78,13 +68,13 @@ export default function GravelColors() {
               <article
                 key={c.name}
                 className="gc-card"
-                style={{
-                  '--gc-base': c.base,
-                  '--gc-light': c.light,
-                  '--gc-dark': c.dark,
-                }}
+                style={{ '--gc-image': `url(${c.image})` }}
               >
-                <div className="gc-card-texture" aria-hidden="true" />
+                <div
+                  className="gc-card-texture"
+                  role="img"
+                  aria-label={`${c.name} gravel close-up`}
+                />
                 <div className="gc-card-overlay">
                   <div className="gc-card-body">
                     <span className="gc-card-eyebrow">{`0${i + 1} / Gravel Color`}</span>
@@ -170,18 +160,10 @@ export default function GravelColors() {
         .gc-card-texture {
           position: absolute;
           inset: 0;
-          background-color: var(--gc-base);
-          background-image:
-            radial-gradient(circle at 22% 28%, var(--gc-light) 0 6%, transparent 7%),
-            radial-gradient(circle at 72% 18%, var(--gc-dark) 0 5%, transparent 6%),
-            radial-gradient(circle at 48% 54%, var(--gc-light) 0 7%, transparent 8%),
-            radial-gradient(circle at 18% 78%, var(--gc-dark) 0 6%, transparent 7%),
-            radial-gradient(circle at 82% 82%, var(--gc-light) 0 5%, transparent 6%),
-            radial-gradient(circle at 62% 72%, var(--gc-dark) 0 4%, transparent 5%),
-            radial-gradient(circle at 38% 12%, var(--gc-dark) 0 3%, transparent 4%);
-          background-size: 60px 60px, 80px 80px, 70px 70px, 55px 55px, 65px 65px, 50px 50px, 45px 45px;
-          background-position: 0 0, 20px 10px, 10px 35px, 35px 20px, 5px 25px, 15px 5px, 28px 18px;
-          filter: contrast(1.06) saturate(1.08);
+          background-image: var(--gc-image);
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
         }
         .gc-card-texture::after {
           content: '';
