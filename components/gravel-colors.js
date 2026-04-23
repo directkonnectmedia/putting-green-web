@@ -44,8 +44,7 @@ export default function GravelColors() {
     const track = trackRef.current
     if (!track) return
     const card = track.querySelector('.gc-card')
-    const gap = 20
-    const delta = card ? card.getBoundingClientRect().width + gap : 360
+    const delta = card ? card.getBoundingClientRect().width : track.clientWidth
     track.scrollBy({ left: dir * delta, behavior: 'smooth' })
   }
 
@@ -75,7 +74,7 @@ export default function GravelColors() {
           </button>
 
           <div className="gc-track" ref={trackRef}>
-            {COLORS.map((c) => (
+            {COLORS.map((c, i) => (
               <article
                 key={c.name}
                 className="gc-card"
@@ -86,13 +85,16 @@ export default function GravelColors() {
                 }}
               >
                 <div className="gc-card-texture" aria-hidden="true" />
-                <div className="gc-card-body">
-                  <h3 className="gc-card-title">{c.name}</h3>
-                  <p className="gc-card-blurb">{c.blurb}</p>
-                  <div className="gc-sizes">
-                    {c.sizes.map((s) => (
-                      <span key={s} className="gc-size-chip">{s}</span>
-                    ))}
+                <div className="gc-card-overlay">
+                  <div className="gc-card-body">
+                    <span className="gc-card-eyebrow">{`0${i + 1} / Gravel Color`}</span>
+                    <h3 className="gc-card-title">{c.name}</h3>
+                    <p className="gc-card-blurb">{c.blurb}</p>
+                    <div className="gc-sizes">
+                      {c.sizes.map((s) => (
+                        <span key={s} className="gc-size-chip">{s}</span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </article>
@@ -145,11 +147,10 @@ export default function GravelColors() {
         }
         .gc-track {
           display: flex;
-          gap: 20px;
           overflow-x: auto;
           scroll-snap-type: x mandatory;
           scroll-behavior: smooth;
-          padding: 12px 4px 28px;
+          border-radius: var(--border-radius-lg);
           scrollbar-width: none;
         }
         .gc-track::-webkit-scrollbar {
@@ -157,27 +158,18 @@ export default function GravelColors() {
         }
 
         .gc-card {
-          flex: 0 0 320px;
+          flex: 0 0 100%;
           scroll-snap-align: start;
-          background: color-mix(in srgb, #ffffff 65%, transparent);
-          backdrop-filter: blur(14px) saturate(140%);
-          -webkit-backdrop-filter: blur(14px) saturate(140%);
-          border: 1px solid color-mix(in srgb, #ffffff 55%, transparent);
+          position: relative;
+          height: clamp(420px, 52vh, 560px);
           border-radius: var(--border-radius-lg);
           overflow: hidden;
-          box-shadow: 0 8px 28px color-mix(in srgb, var(--color-on-surface) 8%, transparent);
-          transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1),
-                      box-shadow 0.35s ease;
-          display: flex;
-          flex-direction: column;
-        }
-        .gc-card:hover {
-          transform: translateY(-6px);
-          box-shadow: 0 18px 40px color-mix(in srgb, var(--color-on-surface) 14%, transparent);
+          box-shadow: 0 18px 44px color-mix(in srgb, var(--color-on-surface) 14%, transparent);
         }
 
         .gc-card-texture {
-          height: 240px;
+          position: absolute;
+          inset: 0;
           background-color: var(--gc-base);
           background-image:
             radial-gradient(circle at 22% 28%, var(--gc-light) 0 6%, transparent 7%),
@@ -189,53 +181,76 @@ export default function GravelColors() {
             radial-gradient(circle at 38% 12%, var(--gc-dark) 0 3%, transparent 4%);
           background-size: 60px 60px, 80px 80px, 70px 70px, 55px 55px, 65px 65px, 50px 50px, 45px 45px;
           background-position: 0 0, 20px 10px, 10px 35px, 35px 20px, 5px 25px, 15px 5px, 28px 18px;
-          position: relative;
-          filter: contrast(1.05) saturate(1.05);
+          filter: contrast(1.06) saturate(1.08);
         }
         .gc-card-texture::after {
           content: '';
           position: absolute;
           inset: 0;
           background:
-            radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.18), transparent 60%),
-            radial-gradient(ellipse at 50% 100%, rgba(0, 0, 0, 0.2), transparent 60%);
+            linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, transparent 30%, transparent 55%, rgba(0, 0, 0, 0.45) 100%),
+            radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.2), transparent 60%);
           pointer-events: none;
         }
 
+        .gc-card-overlay {
+          position: absolute;
+          inset: auto 0 0 0;
+          padding: clamp(1.5rem, 3vw, 2.5rem);
+          display: flex;
+          z-index: 2;
+        }
         .gc-card-body {
-          padding: var(--spacing-lg) var(--spacing-xl) var(--spacing-xl);
+          max-width: 560px;
+          padding: clamp(1.25rem, 2.5vw, 1.75rem) clamp(1.5rem, 3vw, 2rem);
+          background: color-mix(in srgb, #ffffff 55%, transparent);
+          backdrop-filter: blur(18px) saturate(150%);
+          -webkit-backdrop-filter: blur(18px) saturate(150%);
+          border: 1px solid color-mix(in srgb, #ffffff 60%, transparent);
+          border-radius: var(--border-radius-lg);
+          box-shadow: 0 14px 34px color-mix(in srgb, var(--color-on-surface) 18%, transparent);
           display: flex;
           flex-direction: column;
           gap: var(--spacing-xs);
+        }
+        .gc-card-eyebrow {
+          font-family: var(--font-family-body);
+          font-size: 0.78rem;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: var(--color-primary);
+          font-weight: 700;
         }
         .gc-card-title {
           margin: 0;
           font-family: var(--font-family-heading);
           font-weight: var(--font-weight-heading);
-          font-size: 1.5rem;
+          font-size: clamp(1.75rem, 3.2vw, 2.4rem);
           color: var(--color-on-surface);
           letter-spacing: var(--letter-spacing-heading);
+          line-height: 1.1;
         }
         .gc-card-blurb {
           margin: 0;
           font-family: var(--font-family-body);
-          color: var(--color-on-surface-secondary);
-          font-size: 0.92rem;
-          line-height: 1.5;
+          color: var(--color-on-surface);
+          opacity: 0.85;
+          font-size: 1rem;
+          line-height: 1.55;
         }
         .gc-sizes {
           margin-top: var(--spacing-sm);
           display: flex;
           flex-wrap: wrap;
-          gap: 6px;
+          gap: 8px;
         }
         .gc-size-chip {
-          padding: 4px 10px;
+          padding: 6px 12px;
           border-radius: 999px;
-          background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+          background: color-mix(in srgb, var(--color-primary) 10%, transparent);
           color: var(--color-primary);
-          border: 1px solid color-mix(in srgb, var(--color-primary) 25%, transparent);
-          font-size: 0.78rem;
+          border: 1px solid color-mix(in srgb, var(--color-primary) 30%, transparent);
+          font-size: 0.82rem;
           font-weight: 600;
           font-family: var(--font-family-body);
           letter-spacing: 0.04em;
@@ -244,44 +259,45 @@ export default function GravelColors() {
         .gc-nav {
           position: absolute;
           top: calc(50% - 28px);
-          width: 48px;
-          height: 48px;
+          width: 52px;
+          height: 52px;
           border-radius: 50%;
-          border: 1px solid color-mix(in srgb, var(--color-on-surface) 15%, transparent);
-          background: color-mix(in srgb, #ffffff 75%, transparent);
-          backdrop-filter: blur(12px) saturate(140%);
-          -webkit-backdrop-filter: blur(12px) saturate(140%);
+          border: 1px solid color-mix(in srgb, #ffffff 60%, transparent);
+          background: color-mix(in srgb, #ffffff 60%, transparent);
+          backdrop-filter: blur(14px) saturate(160%);
+          -webkit-backdrop-filter: blur(14px) saturate(160%);
           color: var(--color-on-surface);
           cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
           z-index: 3;
-          box-shadow: 0 6px 20px color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+          box-shadow: 0 8px 22px color-mix(in srgb, var(--color-on-surface) 18%, transparent);
           transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
         }
         .gc-nav:hover {
           background: var(--color-primary);
           color: var(--color-on-primary);
           transform: translateY(-2px);
-          box-shadow: 0 10px 26px color-mix(in srgb, var(--color-primary) 30%, transparent);
+          box-shadow: 0 12px 28px color-mix(in srgb, var(--color-primary) 35%, transparent);
         }
         .gc-nav--prev {
-          left: -10px;
+          left: clamp(10px, 2vw, 22px);
         }
         .gc-nav--next {
-          right: -10px;
+          right: clamp(10px, 2vw, 22px);
         }
 
-        @media (max-width: 720px) {
+        @media (max-width: 640px) {
           .gc-card {
-            flex: 0 0 82%;
+            height: clamp(380px, 60vh, 480px);
           }
-          .gc-nav--prev {
-            left: 6px;
+          .gc-card-overlay {
+            padding: 1rem;
           }
-          .gc-nav--next {
-            right: 6px;
+          .gc-nav {
+            width: 44px;
+            height: 44px;
           }
         }
       `}</style>
