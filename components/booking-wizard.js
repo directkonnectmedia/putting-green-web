@@ -653,7 +653,7 @@ export default function BookingWizard() {
           align-items: center;
           justify-content: center;
           border-radius: 50%;
-          background: #2ecc71;
+          background: var(--color-primary);
           color: #fff;
         }
         .bw-success-title {

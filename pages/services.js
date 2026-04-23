@@ -211,10 +211,10 @@ export default function ServicesPage() {
           z-index: 20;
           width: 100%;
           max-width: 520px;
-          background: rgba(255, 255, 255, 0.92);
-          -webkit-backdrop-filter: blur(8px);
-          backdrop-filter: blur(8px);
-          border: 1px solid var(--color-border);
+          background: rgba(255, 255, 255, 0.65);
+          -webkit-backdrop-filter: blur(16px) saturate(150%);
+          backdrop-filter: blur(16px) saturate(150%);
+          border: 1px solid rgba(255, 255, 255, 0.55);
           border-radius: 22px;
           padding: clamp(1.75rem, calc(1.5vw + 1rem), 2.75rem);
           box-shadow: 0 20px 50px rgba(17, 17, 17, 0.08);
