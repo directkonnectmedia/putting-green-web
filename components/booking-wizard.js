@@ -834,69 +834,85 @@ export default function BookingWizard() {
           color: var(--color-on-surface);
         }
         .bw-detail-section {
-          padding: var(--spacing-md) 0;
-          border-top: 1px dashed var(--color-border);
+          margin-top: var(--spacing-xl);
+          padding: var(--spacing-xl);
+          background: color-mix(in srgb, var(--color-primary) 3%, var(--color-surface));
+          border: 1px solid color-mix(in srgb, var(--color-primary) 10%, transparent);
+          border-radius: var(--border-radius-md);
           display: flex;
           flex-direction: column;
-          gap: var(--spacing-md);
+          gap: var(--spacing-xl);
         }
         .bw-detail-section:first-of-type {
-          border-top: none;
-          padding-top: 0;
+          margin-top: var(--spacing-md);
         }
         .bw-detail-heading {
-          margin: 0;
+          margin: 0 0 -8px 0;
           font-family: var(--font-family-heading);
-          font-size: 1.05rem;
+          font-size: 1.3rem;
           font-weight: 600;
           color: var(--color-primary);
-          letter-spacing: 0.02em;
+          letter-spacing: 0.01em;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .bw-detail-heading::before {
+          content: '';
+          display: inline-block;
+          width: 4px;
+          height: 22px;
+          background: var(--color-primary);
+          border-radius: 2px;
         }
         .bw-option-group {
           display: flex;
           flex-direction: column;
-          gap: 8px;
+          gap: 12px;
         }
         .bw-option-label {
-          font-size: 0.78rem;
+          font-size: 1rem;
           font-weight: 600;
-          color: var(--color-on-surface-secondary);
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
+          color: var(--color-on-surface);
+          font-family: var(--font-family-body);
+          line-height: 1.3;
         }
         .bw-option-row {
           display: flex;
           flex-wrap: wrap;
-          gap: 8px;
+          gap: 10px;
         }
         .bw-pill {
-          padding: 8px 14px;
+          padding: 10px 18px;
           border-radius: 999px;
           border: 1.5px solid var(--color-border);
-          background: var(--color-surface);
+          background: var(--color-surface-elevated, #fff);
           color: var(--color-on-surface);
-          font-size: 0.88rem;
+          font-size: 0.95rem;
           font-weight: 500;
           font-family: var(--font-family-body);
           cursor: pointer;
           transition: all 0.18s ease;
+          line-height: 1.2;
         }
         .bw-pill:hover {
           border-color: var(--color-primary);
           color: var(--color-primary);
+          transform: translateY(-1px);
         }
         .bw-pill.is-selected {
           background: var(--color-primary);
           border-color: var(--color-primary);
           color: var(--color-on-primary, #fff);
+          box-shadow: 0 4px 12px color-mix(in srgb, var(--color-primary) 30%, transparent);
         }
         .bw-inline-input {
-          padding: 12px 14px;
+          padding: 14px 16px;
           border: 1.5px solid var(--color-border);
           border-radius: var(--border-radius-sm);
           font-family: var(--font-family-body);
-          font-size: 0.95rem;
-          background: var(--color-surface);
+          font-size: 1rem;
+          background: var(--color-surface-elevated, #fff);
           color: var(--color-on-surface);
           width: 100%;
         }
@@ -915,9 +931,9 @@ export default function BookingWizard() {
           display: flex;
           flex-direction: column;
           align-items: stretch;
-          gap: 6px;
-          padding: 6px;
-          background: var(--color-surface);
+          gap: 8px;
+          padding: 8px 8px 10px;
+          background: var(--color-surface-elevated, #fff);
           border: 2px solid var(--color-border);
           border-radius: var(--border-radius-sm);
           cursor: pointer;

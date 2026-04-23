@@ -2672,6 +2672,11 @@
   align-items: start;
   grid-template-columns: 1fr 1fr;
 }
+
+.booking-form-wrapper--full {
+  max-width: 980px;
+  margin: 0 auto;
+}
  
 
  
