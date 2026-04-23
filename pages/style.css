@@ -17,7 +17,7 @@
   --color-outline: #d4d4d4;
   --color-overlay: color-mix(in oklab, #000000 40%, transparent);
   --color-primary: #4c5244;
-  --color-surface: #eeeeee;
+  --color-surface: #e3d4c5;
   --divider-value: 1px solid var(--color-outline);
   --font-size-2xl: clamp(1.6rem, 1.45rem + 1.2vw, 2rem);
   --font-size-3xl: clamp(2.25rem, 2rem + 1.6vw, 2.8rem);
@@ -75,7 +75,7 @@
   --dl-layout-space-sixunits: 96px;
   --dl-layout-space-twounits: 32px;
   --dl-color-theme-secondary1: #ffffff;
-  --dl-color-theme-secondary2: #eeeeee;
+  --dl-color-theme-secondary2: #e3d4c5;
   --dl-layout-space-fiveunits: 80px;
   --dl-layout-space-fourunits: 64px;
   --color-on-surface-secondary: #6b6b6b;
