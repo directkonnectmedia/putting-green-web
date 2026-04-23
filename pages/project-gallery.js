@@ -7,88 +7,41 @@ import Footer from '../components/footer'
 import SITE from '../lib/site-config'
 
 const CATEGORY_LABEL = {
-  pavers: 'Paver Installation',
-  xeriscape: 'Xeriscaping',
-  pool: 'Pool Deck',
-  turf: 'Artificial Turf',
-  lighting: 'Landscape Lighting',
-  fire: 'Fire Pit & Kitchen',
-  walls: 'Retaining Wall',
+  putting: 'Backyard Putting Green',
+  turf: 'Synthetic Grass',
+  gravel: 'Gravel Installation',
 }
 
 const DESCRIPTIONS = {
-  pavers: [
-    'Backyard paver patio with charcoal finish',
-    'Custom driveway paver installation',
-    'Front walkway with travertine pavers',
-    'Pool deck paver transformation',
-    'Side-yard paver pathway',
-    'Multi-level paver patio with fire feature',
-    'Belgard paver driveway extension',
-    'Entryway walkway with accent border',
-    'Pergola patio with sand-set pavers',
-    'Backyard paver courtyard',
-  ],
-  xeriscape: [
-    'Desert modern xeriscape with native agave',
-    'Front-yard xeriscape and rock bed',
-    'Water-wise garden with decomposed granite',
-    'Drought-tolerant front yard design',
-    'Sonoran-native plant installation',
-    'Ornamental rock and boulder landscape',
-    'Low-water courtyard garden',
-    'Modern desert front yard design',
-    'Xeriscape conversion with river rock',
-  ],
-  pool: [
-    'Travertine pool deck remodel',
-    'Cool-deck pool surround',
-    'Resort-style pool deck with pavers',
-    'Pool coping and deck replacement',
-    'Slip-resistant pool deck finish',
-    'Poolside paver lounge area',
-    'Modern pool deck with acid-stained concrete',
-    'Pool deck expansion with pavers',
+  putting: [
+    'Custom backyard putting green',
+    'Multi-hole practice green with fringe',
+    'Chipping and putting green combo',
+    'Side-yard putting green install',
+    'Patio-side mini putting green',
+    'Contoured putting green with undulations',
+    'Backyard practice green with sand trap',
+    'Compact putting green for small yards',
   ],
   turf: [
-    'Pet-friendly artificial turf install',
-    'Backyard turf lawn replacement',
-    'Putting green turf feature',
+    'Pet-friendly synthetic grass install',
+    'Backyard synthetic lawn replacement',
     'Side-yard turf installation',
-    'Drought-resistant turf lawn',
-    'Playground turf with shock pad',
-    'Front-yard turf replacement',
-    'Low-maintenance turf landscape',
+    'Full front-yard synthetic lawn',
+    'Playground-grade turf with shock pad',
+    'American-made synthetic grass',
+    'Low-maintenance synthetic turf',
+    'Dog-run synthetic grass install',
   ],
-  lighting: [
-    'Pathway lighting with LED bollards',
-    'Tree uplight accent lighting',
-    'Patio bistro string lighting',
-    'Facade wash lighting design',
-    'Step and hardscape LED lighting',
-    'Smart low-voltage landscape lighting',
-    'Architectural uplight installation',
-    'Warm-glow garden lighting',
-  ],
-  fire: [
-    'Custom built-in gas fire pit',
-    'Outdoor kitchen with built-in grill',
-    'Paver fire pit lounge',
-    'Natural stone fire feature',
-    'Covered outdoor cooking area',
-    'Gas fire bowl water feature combo',
-    'Concrete fire pit with seat wall',
-    'Resort-style outdoor kitchen',
-  ],
-  walls: [
-    'Block retaining wall installation',
-    'Decorative seat wall with cap',
-    'Multi-tier garden retaining wall',
-    'Stacked-stone retaining wall',
-    'Freestanding planter wall',
-    'Slope stabilization retaining wall',
-    'Dry-stack decorative wall',
-    'Modern block accent wall',
+  gravel: [
+    'Driveway gravel install (\u00be")',
+    'Decorative gravel landscape bed',
+    'Gray gravel around pavers',
+    'Beige gravel front-yard install',
+    'Red decorative gravel accent',
+    'Pea gravel pathway',
+    'Decomposed granite courtyard',
+    'Crushed gravel driveway refresh',
   ],
 }
 
@@ -99,7 +52,7 @@ const PHOTO_NUMBERS = [
   58, 60, 61, 62, 63, 64, 66,
 ]
 
-const CATEGORY_CYCLE = ['pavers', 'xeriscape', 'pool', 'turf', 'lighting', 'fire', 'walls']
+const CATEGORY_CYCLE = ['putting', 'turf', 'gravel']
 
 const PROJECTS = PHOTO_NUMBERS.map((n, i) => {
   const category = CATEGORY_CYCLE[i % CATEGORY_CYCLE.length]
@@ -125,7 +78,7 @@ export default function ProjectGallery() {
         <meta property="og:title" content={`Project Gallery — ${SITE.brand.name}`} />
         <meta
           name="description"
-          content="Browse our recent landscaping projects."
+          content="Recent putting greens, synthetic grass, and gravel projects across Phoenix, Arizona."
         />
       </Head>
       <div className="pg-page">
@@ -136,7 +89,7 @@ export default function ProjectGallery() {
             <span className="pg-eyebrow">PORTFOLIO</span>
             <h1 className="pg-title">Our Work Gallery</h1>
             <p className="pg-subtitle">
-              Browse our recent landscaping projects.
+              Recent putting greens, synthetic lawns, and gravel installs.
             </p>
           </div>
         </section>
@@ -166,9 +119,9 @@ export default function ProjectGallery() {
 
         <section className="pg-cta">
           <div className="pg-cta-inner">
-            <h2 className="pg-cta-title">Ready to transform your landscape?</h2>
+            <h2 className="pg-cta-title">Ready to transform your backyard?</h2>
             <p className="pg-cta-text">
-              Join hundreds of homeowners who trusted {SITE.brand.name} for their outdoor transformation.
+              Join Phoenix homeowners who trust {SITE.brand.name} for custom putting greens, synthetic grass, and gravel installation.
             </p>
             <div className="pg-cta-actions">
               <a href="/#booking" className="pg-cta-btn pg-cta-btn-primary">Book a Free Estimate</a>

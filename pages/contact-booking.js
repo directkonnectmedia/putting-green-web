@@ -54,7 +54,7 @@ const ContactBooking = (props) => {
               <h1 className="hero-title">
                 <span>
                   {' '}
-                  Let&apos;s Build Your Dream
+                  Let&apos;s Build Your
                   <span
                     dangerouslySetInnerHTML={{
                       __html: ' ',
@@ -62,12 +62,12 @@ const ContactBooking = (props) => {
                   />
                 </span>
                 <span className="contact-booking-thq-text-burgundy-elm">
-                  Outdoor Space
+                  Backyard
                 </span>
               </h1>
               <div className="booking-hero__divider"></div>
               <p className="hero-subtitle">
-                PREMIUM OUTDOOR LIVING • TOLLESON, ARIZONA
+                {SITE.location.heroTagline}
               </p>
               <div className="booking-hero__actions">
                 <a href="#booking-form">
@@ -105,11 +105,12 @@ const ContactBooking = (props) => {
               <div className="booking-info">
                 <span className="section-label">GET STARTED</span>
                 <h2 className="section-title">
-                  Let&apos;s Build Your Dream Outdoor Space
+                  Let&apos;s Build Your Backyard
                 </h2>
                 <p className="section-content">
-                  Ready to transform your property? Fill out the form or give us
-                  a call for a free, no-obligation estimate. We serve{' '}
+                  Ready for a new putting green, synthetic lawn, or fresh
+                  gravel? Fill out the form or give us a call for a free,
+                  no-obligation estimate. We serve{' '}
                   {SITE.location.serviceAreaCities}.
                 </p>
                 <div className="booking-info__details">
@@ -302,8 +303,9 @@ const ContactBooking = (props) => {
                 </div>
                 <h3 className="process-step__title">Project Scheduling</h3>
                 <p className="section-content">
-                  Once approved, we set a start date and our professional crew
-                  gets to work bringing your dream landscape to life.
+                  Once approved, we set a start date and our crew gets to
+                  work building your new putting green, synthetic lawn, or
+                  gravel install.
                 </p>
               </div>
             </div>
@@ -317,8 +319,8 @@ const ContactBooking = (props) => {
                 Request Your Free Estimate Today
               </h2>
               <p className="section-content">
-                Experience the luxury of a professionally designed outdoor
-                living space.
+                Custom putting greens, synthetic grass, and gravel &mdash;
+                done right, priced fair.
               </p>
               <div className="cta-banner__actions">
                 <a href={`tel:${SITE.contact.phoneTel}`}>
@@ -349,18 +351,19 @@ const ContactBooking = (props) => {
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
-                    viewbox="0 0 24 24"
+                    viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
-                    <rect width="18" height="18" x="3" y="3" rx="2"></rect>
-                    <path d="M3 9h18M3 15h18M9 3v18M15 3v18"></path>
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <circle cx="12" cy="12" r="1.5" fill="currentColor"></circle>
+                    <path d="M12 3v3M21 12h-3M12 21v-3M3 12h3"></path>
                   </svg>
                 </div>
-                <h4 className="service-mini-card__title">Paver Installation</h4>
+                <h4 className="service-mini-card__title">Backyard Putting Greens</h4>
               </div>
               <div className="service-mini-card">
                 <div className="service-mini-card__icon">
@@ -368,26 +371,7 @@ const ContactBooking = (props) => {
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
-                    viewbox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
-                    <path d="m9 12 2 2 4-4"></path>
-                  </svg>
-                </div>
-                <h4 className="service-mini-card__title">Xeriscaping</h4>
-              </div>
-              <div className="service-mini-card">
-                <div className="service-mini-card__icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewbox="0 0 24 24"
+                    viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
@@ -398,7 +382,7 @@ const ContactBooking = (props) => {
                     <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
                   </svg>
                 </div>
-                <h4 className="service-mini-card__title">Artificial Turf</h4>
+                <h4 className="service-mini-card__title">Synthetic Grass</h4>
               </div>
               <div className="service-mini-card">
                 <div className="service-mini-card__icon">
@@ -406,129 +390,22 @@ const ContactBooking = (props) => {
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
-                    viewbox="0 0 24 24"
+                    viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
-                    <path d="M2 12h20"></path>
-                    <path d="M12 2v20"></path>
-                    <path d="m4.93 4.93 14.14 14.14"></path>
-                    <path d="m4.93 19.07 14.14-14.14"></path>
+                    <circle cx="6" cy="8" r="2"></circle>
+                    <circle cx="13" cy="6" r="1.5"></circle>
+                    <circle cx="18" cy="10" r="2"></circle>
+                    <circle cx="9" cy="14" r="1.5"></circle>
+                    <circle cx="16" cy="17" r="2"></circle>
+                    <circle cx="6" cy="18" r="1.5"></circle>
                   </svg>
                 </div>
-                <h4 className="service-mini-card__title">
-                  Pool Deck Remodeling
-                </h4>
-              </div>
-              <div className="service-mini-card">
-                <div className="service-mini-card__icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewbox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M3 21h18"></path>
-                    <path d="M3 17h18"></path>
-                    <path d="M3 13h18"></path>
-                    <path d="M3 9h18"></path>
-                    <path d="M3 5h18"></path>
-                  </svg>
-                </div>
-                <h4 className="service-mini-card__title">Retaining Walls</h4>
-              </div>
-              <div className="service-mini-card">
-                <div className="service-mini-card__icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewbox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5s-3 3.5-3 5.5a7 7 0 0 0 7 7z"></path>
-                  </svg>
-                </div>
-                <h4 className="service-mini-card__title">Irrigation Systems</h4>
-              </div>
-              <div className="service-mini-card">
-                <div className="service-mini-card__icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewbox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M8 2v3"></path>
-                    <path d="M16 2v3"></path>
-                    <path d="M4 19c0 1.7 1.3 3 3 3h10c1.7 0 3-1.3 3-3v-5H4v5Z"></path>
-                    <path d="M4 14V9c0-1.7 1.3-3 3-3h10c1.7 0 3 1.3 3 3v5H4Z"></path>
-                    <path d="M12 11v3"></path>
-                  </svg>
-                </div>
-                <h4 className="service-mini-card__title">
-                  Fire Pits &amp; Kitchens
-                </h4>
-              </div>
-              <div className="service-mini-card">
-                <div className="service-mini-card__icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewbox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M12 20v-8"></path>
-                    <path d="M12 12l-4-4"></path>
-                    <path d="M12 12l4-4"></path>
-                    <path d="M12 20l4-4"></path>
-                    <path d="M12 20l-4-4"></path>
-                    <path d="M12 4v4"></path>
-                  </svg>
-                </div>
-                <h4 className="service-mini-card__title">
-                  Tree &amp; Plant Installation
-                </h4>
-              </div>
-              <div className="service-mini-card">
-                <div className="service-mini-card__icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewbox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M15 14c.2-1 .7-1.7 1.5-2.5c1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5c.7.7 1.3 1.5 1.5 2.5m0 4h6m-5 4h4"></path>
-                  </svg>
-                </div>
-                <h4 className="service-mini-card__title">Landscape Lighting</h4>
+                <h4 className="service-mini-card__title">Gravel Spreading</h4>
               </div>
             </div>
           </div>
@@ -575,32 +452,32 @@ const ContactBooking = (props) => {
               <details className="faq-item">
                 <summary className="faq-item__trigger">
                   <span className="faq-item__title">
-                    What areas in the West Valley do you cover?
+                    What areas do you cover?
                   </span>
                   <span className="faq-item__icon"></span>
                 </summary>
                 <div className="faq-item__content">
                   <p className="section-content">
-                    We primarily serve Tolleson, Avondale, Goodyear, Litchfield
-                    Park, and Buckeye. If you are located just outside these
-                    areas in the West Valley, please reach out as we often
-                    accommodate nearby projects.
+                    We serve Phoenix, Scottsdale, Mesa, Tempe, Chandler,
+                    Glendale, and the surrounding Valley. If you&apos;re nearby,
+                    give us a call &mdash; we often accommodate projects just
+                    outside those cities.
                   </p>
                 </div>
               </details>
               <details className="faq-item">
                 <summary className="faq-item__trigger">
                   <span className="faq-item__title">
-                    Do you specialize in water-wise (Xeriscape) designs?
+                    Is your synthetic grass pet and kid friendly?
                   </span>
                   <span className="faq-item__icon"></span>
                 </summary>
                 <div className="faq-item__content">
                   <p className="section-content">
-                    Absolutely. Living in the Sonoran Desert, we prioritize
-                    sustainable, water-efficient designs that don&apos;t
-                    sacrifice beauty. We use native plants and smart irrigation
-                    to minimize water waste while maximizing curb appeal.
+                    Yes. We use high-quality, American-made turf designed to
+                    be soft underfoot, safe for kids, and durable enough for
+                    dogs. Pet-safe infill options are available on every
+                    install.
                   </p>
                 </div>
               </details>

@@ -1,47 +1,37 @@
 import React from 'react'
 
+// NOTE: Placeholder testimonials. Replace with real customer reviews when
+// available (Google Reviews or direct quotes).
 const REVIEWS = [
   {
     initials: 'MR',
     name: 'Maria R.',
-    city: 'Tolleson, AZ',
-    text: 'They completely transformed our backyard into a desert oasis. The paver patio and fire pit area are absolutely stunning. Professional crew, on time, and the quality is unmatched.',
+    city: 'Phoenix, AZ',
+    text: 'Alejandro installed a custom putting green in our backyard and it turned out incredible. True roll, clean edges, and my husband is out there practicing every morning. Professional from start to finish.',
   },
   {
     initials: 'JT',
     name: 'James T.',
-    city: 'Avondale, AZ',
-    text: 'Best landscaping company in the West Valley, hands down. They installed artificial turf and a full xeriscaping design. Our water bill dropped and the yard looks incredible year-round.',
+    city: 'Scottsdale, AZ',
+    text: 'Replaced our dead lawn with synthetic grass from Putting Green. The turf looks real, our dogs love it, and the water bill dropped immediately. Fair price and clean install.',
   },
   {
     initials: 'SL',
     name: 'Sarah L.',
-    city: 'Goodyear, AZ',
-    text: 'From the first consultation to the final walkthrough, the team lived up to their name. Our pool deck remodel exceeded every expectation. Highly recommend to anyone in the area.',
+    city: 'Mesa, AZ',
+    text: 'We needed gravel for the driveway and beds around the house. Alejandro delivered and spread it the same week, exactly the color we wanted. Great communication and honest pricing.',
   },
   {
     initials: 'DM',
     name: 'Daniel M.',
-    city: 'Buckeye, AZ',
-    text: 'They built beautiful retaining walls and upgraded our irrigation in about a week. Clean jobsite every day, great communication, and the finished work looks like a magazine cover.',
+    city: 'Chandler, AZ',
+    text: 'Had a multi-hole putting green built in the backyard — fringe, cups, the whole thing. Quality materials and the crew worked clean. My kids play on it every day and it still looks pristine.',
   },
   {
     initials: 'PK',
     name: 'Priya K.',
-    city: 'Litchfield Park, AZ',
-    text: 'We did a full backyard remodel — pavers, turf, lighting, the works. The team handled everything with our HOA and kept us updated daily. Worth every penny.',
-  },
-  {
-    initials: 'RF',
-    name: 'Robert F.',
-    city: 'Phoenix, AZ',
-    text: 'Low-voltage landscape lighting transformed our curb appeal after dark. They picked the right fixtures, ran everything cleanly, and the result is genuinely breathtaking at night.',
-  },
-  {
-    initials: 'AB',
-    name: 'Amanda B.',
-    city: 'Peoria, AZ',
-    text: 'Installed pet-friendly artificial turf for our two dogs. No more dust bowl, no more brown spots, and the kids love it too. Incredibly happy with the whole experience.',
+    city: 'Tempe, AZ',
+    text: 'Full front yard synthetic grass install. The turf is soft, pet-safe, and holds up in the summer heat. Alejandro walked us through every option and delivered exactly what he promised.',
   },
 ]
 

@@ -112,84 +112,30 @@ const Home = (props) => {
             </div>
             <div id="servicesCarousel" className="services-carousel">
               <div className="services-carousel__track">
-                <div className="services-slide is-active" data-slide="0" style={{ backgroundImage: "url(/photos/service-pavers.png)" }}>
+                <div className="services-slide is-active" data-slide="0" style={{ backgroundImage: "url(/photos/photo-05.jpg)" }}>
                   <div className="services-slide__overlay"></div>
                   <div className="services-slide__content">
-                    <span className="services-slide__eyebrow">01 / Premium Hardscape</span>
-                    <h3 className="services-slide__title">Paver Installation</h3>
-                    <p className="services-slide__desc">Custom driveways, patios, walkways, and pool decks with premium pavers built to withstand Arizona&apos;s heat and last a lifetime.</p>
+                    <span className="services-slide__eyebrow">01 / Signature Service</span>
+                    <h3 className="services-slide__title">Backyard Putting Greens</h3>
+                    <p className="services-slide__desc">Custom-built synthetic putting greens for your backyard. True roll, realistic speed, and tailored layouts so you can practice like you&apos;re on the course &mdash; without leaving home.</p>
                     <a href="#booking" className="services-slide__cta"><span>Get a Quote</span></a>
                   </div>
                 </div>
                 <div className="services-slide" data-slide="1" style={{ backgroundImage: "url(/photos/photo-03.jpg)" }}>
                   <div className="services-slide__overlay"></div>
                   <div className="services-slide__content">
-                    <span className="services-slide__eyebrow">02 / Water-Wise Design</span>
-                    <h3 className="services-slide__title">Xeriscaping</h3>
-                    <p className="services-slide__desc">Water-efficient desert landscaping that&apos;s beautiful and sustainable with native plants, rock features, and drought-tolerant design.</p>
+                    <span className="services-slide__eyebrow">02 / Turf &amp; Lawns</span>
+                    <h3 className="services-slide__title">Synthetic Grass</h3>
+                    <p className="services-slide__desc">Premium American-made synthetic turf that looks real, feels soft, and stays green year-round. Pet-friendly, kid-friendly, and affordably priced.</p>
                     <a href="#booking" className="services-slide__cta"><span>Get a Quote</span></a>
                   </div>
                 </div>
-                <div className="services-slide" data-slide="2" style={{ backgroundImage: "url(/photos/photo-05.jpg)" }}>
+                <div className="services-slide" data-slide="2" style={{ backgroundImage: "url(/photos/photo-32.jpg)" }}>
                   <div className="services-slide__overlay"></div>
                   <div className="services-slide__content">
-                    <span className="services-slide__eyebrow">03 / Year-Round Green</span>
-                    <h3 className="services-slide__title">Artificial Turf</h3>
-                    <p className="services-slide__desc">Lush green lawns year-round with zero water waste, perfect for families, pets, and Arizona&apos;s extreme climate.</p>
-                    <a href="#booking" className="services-slide__cta"><span>Get a Quote</span></a>
-                  </div>
-                </div>
-                <div className="services-slide" data-slide="3" style={{ backgroundImage: "url(/photos/photo-57.jpg)" }}>
-                  <div className="services-slide__overlay"></div>
-                  <div className="services-slide__content">
-                    <span className="services-slide__eyebrow">04 / Resort-Style Decks</span>
-                    <h3 className="services-slide__title">Pool Deck Remodeling</h3>
-                    <p className="services-slide__desc">Cool-deck finishes, travertine pavers, and slip-resistant surfaces designed for the desert sun.</p>
-                    <a href="#booking" className="services-slide__cta"><span>Get a Quote</span></a>
-                  </div>
-                </div>
-                <div className="services-slide" data-slide="4" style={{ backgroundImage: "url(/photos/photo-32.jpg)" }}>
-                  <div className="services-slide__overlay"></div>
-                  <div className="services-slide__content">
-                    <span className="services-slide__eyebrow">05 / Structural Beauty</span>
-                    <h3 className="services-slide__title">Retaining Walls</h3>
-                    <p className="services-slide__desc">Functional and decorative block walls, seat walls, and retaining structures that add dimension and value to your property.</p>
-                    <a href="#booking" className="services-slide__cta"><span>Get a Quote</span></a>
-                  </div>
-                </div>
-                <div className="services-slide" data-slide="5" style={{ backgroundImage: "url(/photos/service-irrigation.png)" }}>
-                  <div className="services-slide__overlay"></div>
-                  <div className="services-slide__content">
-                    <span className="services-slide__eyebrow">06 / Smart Watering</span>
-                    <h3 className="services-slide__title">Irrigation Systems</h3>
-                    <p className="services-slide__desc">Smart drip irrigation installation and repair to keep your landscape thriving while conserving water in the Sonoran Desert.</p>
-                    <a href="#booking" className="services-slide__cta"><span>Get a Quote</span></a>
-                  </div>
-                </div>
-                <div className="services-slide" data-slide="6" style={{ backgroundImage: "url(/photos/photo-52.jpg)" }}>
-                  <div className="services-slide__overlay"></div>
-                  <div className="services-slide__content">
-                    <span className="services-slide__eyebrow">07 / Outdoor Living</span>
-                    <h3 className="services-slide__title">Fire Pits &amp; Kitchens</h3>
-                    <p className="services-slide__desc">Custom-built fire features and outdoor cooking areas for unforgettable evenings under the Arizona sky.</p>
-                    <a href="#booking" className="services-slide__cta"><span>Get a Quote</span></a>
-                  </div>
-                </div>
-                <div className="services-slide" data-slide="7" style={{ backgroundImage: "url(/photos/service-plants.png)" }}>
-                  <div className="services-slide__overlay"></div>
-                  <div className="services-slide__content">
-                    <span className="services-slide__eyebrow">08 / Living Color</span>
-                    <h3 className="services-slide__title">Tree &amp; Plant Installation</h3>
-                    <p className="services-slide__desc">Expert selection and planting of desert-adapted trees, shrubs, and flowering plants that thrive in the Valley heat.</p>
-                    <a href="#booking" className="services-slide__cta"><span>Get a Quote</span></a>
-                  </div>
-                </div>
-                <div className="services-slide" data-slide="8" style={{ backgroundImage: "url(/photos/photo-14.jpg)" }}>
-                  <div className="services-slide__overlay"></div>
-                  <div className="services-slide__content">
-                    <span className="services-slide__eyebrow">09 / Evening Ambiance</span>
-                    <h3 className="services-slide__title">Landscape Lighting</h3>
-                    <p className="services-slide__desc">Low-voltage LED lighting design that highlights your landscape, improves safety, and creates stunning curb appeal at night.</p>
+                    <span className="services-slide__eyebrow">03 / Hardscape</span>
+                    <h3 className="services-slide__title">Gravel Spreading &amp; Installation</h3>
+                    <p className="services-slide__desc">Driveways, yards, and landscape beds. Multiple sizes from &frac14;&quot; fine to &frac34;&quot;, in gray, beige, red, and decorative mixes. Delivery and installation available.</p>
                     <a href="#booking" className="services-slide__cta"><span>Get a Quote</span></a>
                   </div>
                 </div>
@@ -201,12 +147,6 @@ const Home = (props) => {
                 <button data-dot="0" className="services-carousel__dot is-active" aria-label="Go to service 1"></button>
                 <button data-dot="1" className="services-carousel__dot" aria-label="Go to service 2"></button>
                 <button data-dot="2" className="services-carousel__dot" aria-label="Go to service 3"></button>
-                <button data-dot="3" className="services-carousel__dot" aria-label="Go to service 4"></button>
-                <button data-dot="4" className="services-carousel__dot" aria-label="Go to service 5"></button>
-                <button data-dot="5" className="services-carousel__dot" aria-label="Go to service 6"></button>
-                <button data-dot="6" className="services-carousel__dot" aria-label="Go to service 7"></button>
-                <button data-dot="7" className="services-carousel__dot" aria-label="Go to service 8"></button>
-                <button data-dot="8" className="services-carousel__dot" aria-label="Go to service 9"></button>
               </div>
               <div className="services-carousel__progress"><div id="servicesProgress" className="services-carousel__progress-bar"></div></div>
             </div>
@@ -234,16 +174,16 @@ const Home = (props) => {
               viewport={{ once: true, amount: 0.25 }}
             >
               <motion.span variants={fadeUp} className="home-section-label">
-                THE DONE RIGHT DIFFERENCE
+                THE PUTTING GREEN DIFFERENCE
               </motion.span>
               <motion.h2 variants={fadeUp} className="home-section-title section-title">
-                Luxury Craftsmanship for the Desert Lifestyle
+                Premium Synthetic Turf Built for Phoenix
               </motion.h2>
               <motion.p variants={fadeUp} className="why-description section-content">
-                We don&apos;t just landscape; we engineer premium outdoor
-                environments that harmonize with the unique Arizona climate. Our
-                team combines high-end architectural aesthetics with water-wise
-                Sonoran sustainability.
+                We install custom putting greens, synthetic lawns, and gravel
+                with high-quality, American-made materials that hold up to the
+                Arizona sun. Clean work, fair pricing, and yards that stay
+                beautiful year-round &mdash; pet-safe and kid-safe by default.
               </motion.p>
               <motion.div
                 className="trust-points"
@@ -268,8 +208,8 @@ const Home = (props) => {
                   <div className="trust-text">
                     <h4 className="trust-title">Quality Materials</h4>
                     <p className="section-content">
-                      We source only premium-grade pavers, turf, and plants
-                      selected for desert longevity.
+                      Brand-new, American-made synthetic turf and top-grade
+                      gravel &mdash; built to last in the Arizona heat.
                     </p>
                   </div>
                 </motion.div>
@@ -294,8 +234,8 @@ const Home = (props) => {
                   <div className="trust-text">
                     <h4 className="trust-title">Local Knowledge</h4>
                     <p className="section-content">
-                      Deep understanding of West Valley soil, drainage, and HOA
-                      requirements.
+                      Based in Phoenix and familiar with Valley yards,
+                      drainage, and HOA requirements.
                     </p>
                   </div>
                 </motion.div>
@@ -335,7 +275,7 @@ const Home = (props) => {
             >
               <img
                 src="/photos/photo-07.jpg"
-                alt="Arizona Landscaping Excellence"
+                alt="Putting Green synthetic turf installation in Phoenix"
                 className="why-image"
               />
             </motion.div>
@@ -347,11 +287,12 @@ const Home = (props) => {
               <div className="booking-info">
                 <span className="home-section-label">GET STARTED</span>
                 <h2 className="home-section-title section-title">
-                  Let&apos;s Build Your Dream Outdoor Space
+                  Let&apos;s Build Your Backyard
                 </h2>
                 <p className="section-content">
-                  Ready to transform your property? Fill out the form or give us
-                  a call for a free, no-obligation estimate. We serve{' '}
+                  Ready for a new putting green, synthetic lawn, or fresh
+                  gravel? Fill out the form or give us a call for a free,
+                  no-obligation estimate. We serve{' '}
                   {SITE.location.serviceAreaCities}.
                 </p>
                 <div className="contact-methods">
@@ -425,11 +366,12 @@ const Home = (props) => {
           <div className="cta-container">
             <div className="cta-card">
               <h2 className="home-section-title section-title">
-                Ready to Transform Your Outdoor Space?
+                Ready to Upgrade Your Backyard?
               </h2>
               <p className="cta-text section-content">
-                Join hundreds of satisfied homeowners who trusted{' '}
-                {SITE.brand.name} for their premium outdoor living transformations.
+                Join Phoenix homeowners who trust {SITE.brand.name} for
+                custom putting greens, synthetic lawns, and professional
+                gravel installation.
               </p>
               <div className="cta-divider"></div>
               <div className="cta-buttons">
@@ -463,7 +405,7 @@ to {transform: scaleX(1);}}@keyframes bounce {0%,20%,50%,80%,100% {transform: tr
         <div className="home-container4">
           <div className="home-container5">
             <Script
-              html={`<script defer data-name="done-right-landscaping">
+              html={`<script defer data-name="putting-green">
 (function(){
   // Services Carousel
   const sCarousel = document.getElementById("servicesCarousel")

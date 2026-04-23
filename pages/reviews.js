@@ -7,69 +7,57 @@ import Navigation from '../components/navigation'
 import Footer from '../components/footer'
 import SITE from '../lib/site-config'
 
+// NOTE: Placeholder testimonials. Replace with real customer reviews when
+// available (Google Reviews or direct quotes).
 const REVIEWS = [
   {
     initials: 'MR',
     name: 'Maria R.',
-    city: 'Tolleson, AZ',
-    service: 'Paver Patio & Fire Pit',
-    text: 'They completely transformed our backyard into a desert oasis. The paver patio and fire pit area are absolutely stunning. Professional crew, on time, and the quality is unmatched.',
+    city: 'Phoenix, AZ',
+    service: 'Backyard Putting Green',
+    text: 'Alejandro installed a custom putting green in our backyard and it turned out incredible. True roll, clean edges, and my husband is out there practicing every morning. Professional from start to finish.',
   },
   {
     initials: 'JT',
     name: 'James T.',
-    city: 'Avondale, AZ',
-    service: 'Artificial Turf & Xeriscape',
-    text: 'Best landscaping company in the West Valley, hands down. They installed artificial turf and a full xeriscaping design. Our water bill dropped and the yard looks incredible year-round.',
+    city: 'Scottsdale, AZ',
+    service: 'Synthetic Grass',
+    text: 'Replaced our dead lawn with synthetic grass from Putting Green. The turf looks real, our dogs love it, and the water bill dropped immediately. Fair price and clean install.',
   },
   {
     initials: 'SL',
     name: 'Sarah L.',
-    city: 'Goodyear, AZ',
-    service: 'Pool Deck Remodel',
-    text: 'From the first consultation to the final walkthrough, the team lived up to their name. Our pool deck remodel exceeded every expectation. Highly recommend to anyone in the area.',
+    city: 'Mesa, AZ',
+    service: 'Gravel Installation',
+    text: 'We needed gravel for the driveway and beds around the house. Alejandro delivered and spread it the same week, exactly the color we wanted. Great communication and honest pricing.',
   },
   {
     initials: 'DM',
     name: 'Daniel M.',
-    city: 'Buckeye, AZ',
-    service: 'Retaining Walls & Irrigation',
-    text: 'They built beautiful retaining walls and upgraded our irrigation in about a week. Clean jobsite every day, great communication, and the finished work looks like a magazine cover. Worth every dollar.',
+    city: 'Chandler, AZ',
+    service: 'Multi-Hole Putting Green',
+    text: 'Had a multi-hole putting green built in the backyard \u2014 fringe, cups, the whole thing. Quality materials and the crew worked clean. My kids play on it every day and it still looks pristine.',
   },
   {
     initials: 'PK',
     name: 'Priya K.',
-    city: 'Litchfield Park, AZ',
-    service: 'Full Backyard Remodel',
-    text: 'We did a full backyard remodel — pavers, turf, lighting, the works. The team handled everything with our HOA and kept us updated daily. Worth every penny.',
+    city: 'Tempe, AZ',
+    service: 'Front Yard Synthetic Grass',
+    text: 'Full front yard synthetic grass install. The turf is soft, pet-safe, and holds up in the summer heat. Alejandro walked us through every option and delivered exactly what he promised.',
   },
   {
     initials: 'RF',
     name: 'Robert F.',
-    city: 'Phoenix, AZ',
-    service: 'Landscape Lighting',
-    text: 'Low-voltage landscape lighting transformed our curb appeal after dark. They picked the right fixtures, ran everything cleanly, and the result is genuinely breathtaking at night.',
+    city: 'Glendale, AZ',
+    service: 'Driveway Gravel',
+    text: 'Replaced our old driveway gravel with a clean \u00be" install. Fast, fair, and the colors match the house perfectly. Would recommend Alejandro to anyone in the Valley.',
   },
   {
     initials: 'AB',
     name: 'Amanda B.',
     city: 'Peoria, AZ',
     service: 'Pet-Friendly Turf',
-    text: 'Installed pet-friendly artificial turf for our two dogs. No more dust bowl, no more brown spots, and the kids love it too. Incredibly happy with the whole experience and will be calling again for our front yard.',
-  },
-  {
-    initials: 'CE',
-    name: 'Carlos E.',
-    city: 'Tolleson, AZ',
-    service: 'Paver Driveway',
-    text: 'The paver driveway they installed has completely elevated the look of our home. Meticulous attention to detail on the borders and crisp cuts around the curves.',
-  },
-  {
-    initials: 'LH',
-    name: 'Lisa H.',
-    city: 'Surprise, AZ',
-    service: 'Fire Pit & Outdoor Kitchen',
-    text: 'We host a lot, and our new outdoor kitchen and fire pit are now the centerpiece of every gathering. Solid construction, beautiful stone work, and fast turnaround.',
+    text: 'Pet-friendly synthetic grass for our two dogs. No more dust bowl, no more brown spots, and the kids love it too. Incredibly happy and already planning the front yard.',
   },
 ]
 
@@ -126,8 +114,8 @@ export default function ReviewsPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
             >
-              Real feedback from real West Valley homeowners. We take every project personally &mdash;
-              and our clients notice.
+              Real feedback from Phoenix-area homeowners. Every project gets
+              the same attention to detail &mdash; and our clients notice.
             </motion.p>
             <motion.div
               className="rv-summary"
@@ -192,7 +180,7 @@ export default function ReviewsPage() {
           <div className="rv-cta-inner">
             <h2 className="rv-cta-title">Ready to write your own review?</h2>
             <p className="rv-cta-text">
-              Book your free estimate and let&apos;s build an outdoor space you&apos;ll love for years.
+              Book your free estimate and let&apos;s build a backyard you&apos;ll love for years.
             </p>
             <div className="rv-cta-actions">
               <Link href="/#booking"><a className="rv-cta-btn rv-cta-btn-primary">Book a Free Estimate</a></Link>

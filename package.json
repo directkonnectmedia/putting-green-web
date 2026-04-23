@@ -1,8 +1,8 @@
 {
-  "name": "landscape-website-template",
+  "name": "putting-green-web",
   "version": "1.0.0",
   "private": true,
-  "description": "Reusable Next.js template for landscaping company websites.",
+  "description": "Marketing site for Putting Green \u2014 backyard putting greens, synthetic grass, and gravel installation in Phoenix, AZ.",
   "main": "index.js",
   "scripts": {
     "dev": "next",
