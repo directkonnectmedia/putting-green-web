@@ -638,7 +638,7 @@ export default function BookingWizard() {
         )}
       </form>
 
-      <style jsx>{`
+      <style jsx global>{`
         .bw-card {
           position: relative;
           overflow: hidden;
