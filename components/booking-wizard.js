@@ -180,7 +180,7 @@ export default function BookingWizard() {
     if (step === 1) return true // Details step — all fields optional
     if (step === 2) return true // Project step — all fields optional
     if (step === 3) {
-      return data.firstName.trim() && data.lastName.trim() && data.phone.replace(/\D/g, '').length === 10 && /.+@.+\..+/.test(data.email)
+      return data.firstName.trim() && data.lastName.trim() && data.phone.replace(/\D/g, '').length === 10
     }
     return true
   }
@@ -565,8 +565,8 @@ export default function BookingWizard() {
                         <input id="bw-phone" type="tel" inputMode="numeric" autoComplete="tel" placeholder="(555) 555-0100" value={data.phone} onChange={update('phone')} required />
                       </div>
                       <div className="bw-field">
-                        <label htmlFor="bw-email">Email</label>
-                        <input id="bw-email" type="email" autoComplete="email" placeholder="john@example.com" value={data.email} onChange={update('email')} required />
+                        <label htmlFor="bw-email">Email (optional)</label>
+                        <input id="bw-email" type="email" autoComplete="email" placeholder="john@example.com" value={data.email} onChange={update('email')} />
                       </div>
                     </div>
                   </div>
@@ -599,7 +599,7 @@ export default function BookingWizard() {
                       </div>
                       <div><dt>Name</dt><dd>{data.firstName} {data.lastName}</dd></div>
                       <div><dt>Phone</dt><dd>{data.phone}</dd></div>
-                      <div><dt>Email</dt><dd>{data.email}</dd></div>
+                      <div><dt>Email</dt><dd>{data.email || <span className="bw-muted">—</span>}</dd></div>
                     </dl>
                   </div>
                 )}
