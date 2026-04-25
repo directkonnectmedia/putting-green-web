@@ -112,95 +112,56 @@ const Home = (props) => {
               <div className="header-divider"></div>
             </div>
             <div id="servicesCarousel" className="services-carousel">
-              <div className="services-carousel__track">
-                <div className="services-slide is-active" data-slide="0">
-                  <div className="services-slide__inner">
-                    <div className="services-slide__content">
+              <div className="services-carousel__split">
+                <div className="services-flipstage" aria-hidden="true">
+                  <div id="servicesFlipcard" className="services-flipcard">
+                    <div id="servicesFlipFront" className="services-flipcard__face services-flipcard__face--front" style={{ backgroundImage: "url(/photos/pg-01.jpg)" }}></div>
+                    <div id="servicesFlipBack" className="services-flipcard__face services-flipcard__face--back"></div>
+                  </div>
+                </div>
+                <div className="services-carousel__textstage">
+                  <div className="services-carousel__track">
+                    <div className="services-slide is-active" data-slide="0" data-image="/photos/pg-01.jpg">
                       <span className="services-slide__eyebrow">01 / Signature Service</span>
                       <h3 className="services-slide__title">Backyard Putting Greens</h3>
                       <p className="services-slide__desc">Custom-built synthetic putting greens for your backyard. True roll, realistic speed, and tailored layouts so you can practice like you&apos;re on the course &mdash; without leaving home.</p>
                       <a href="#booking" className="services-slide__cta"><span>Get a Quote</span></a>
                     </div>
-                    <div className="services-slide__media">
-                      <img src="/photos/pg-01.jpg" alt="Backyard Putting Greens" loading="lazy" />
-                    </div>
-                  </div>
-                </div>
-                <div className="services-slide" data-slide="1">
-                  <div className="services-slide__inner">
-                    <div className="services-slide__content">
+                    <div className="services-slide" data-slide="1" data-image="/photos/pg-05.jpg">
                       <span className="services-slide__eyebrow">02 / Turf &amp; Lawns</span>
                       <h3 className="services-slide__title">Synthetic Grass</h3>
                       <p className="services-slide__desc">Premium American-made synthetic turf that looks real, feels soft, and stays green year-round. Pet-friendly, kid-friendly, and affordably priced.</p>
                       <a href="#booking" className="services-slide__cta"><span>Get a Quote</span></a>
                     </div>
-                    <div className="services-slide__media">
-                      <img src="/photos/pg-05.jpg" alt="Synthetic Grass" loading="lazy" />
-                    </div>
-                  </div>
-                </div>
-                <div className="services-slide" data-slide="2">
-                  <div className="services-slide__inner">
-                    <div className="services-slide__content">
+                    <div className="services-slide" data-slide="2" data-image="/photos/pg-10.jpg">
                       <span className="services-slide__eyebrow">03 / Hardscape</span>
                       <h3 className="services-slide__title">Gravel Spreading &amp; Installation</h3>
                       <p className="services-slide__desc">Driveways, yards, and landscape beds. Multiple sizes from &frac14;&quot; fine to &frac34;&quot;, in gray, beige, red, and decorative mixes. Delivery and installation available.</p>
                       <a href="#booking" className="services-slide__cta"><span>Get a Quote</span></a>
                     </div>
-                    <div className="services-slide__media">
-                      <img src="/photos/pg-10.jpg" alt="Gravel Spreading and Installation" loading="lazy" />
-                    </div>
-                  </div>
-                </div>
-                <div className="services-slide" data-slide="3">
-                  <div className="services-slide__inner">
-                    <div className="services-slide__content">
+                    <div className="services-slide" data-slide="3" data-image="/photos/service-pavers.png">
                       <span className="services-slide__eyebrow">04 / Hardscape</span>
                       <h3 className="services-slide__title">Paver Driveways &amp; Walkways</h3>
                       <p className="services-slide__desc">Custom paver driveways, walkways, and patios that boost curb appeal and stand up to the Phoenix sun. Clean lines, level joints, and a finish built to last.</p>
                       <a href="#booking" className="services-slide__cta"><span>Get a Quote</span></a>
                     </div>
-                    <div className="services-slide__media">
-                      <img src="/photos/service-pavers.png" alt="Paver Driveways and Walkways" loading="lazy" />
-                    </div>
-                  </div>
-                </div>
-                <div className="services-slide" data-slide="4">
-                  <div className="services-slide__inner">
-                    <div className="services-slide__content">
+                    <div className="services-slide" data-slide="4" data-image="/photos/service-tree-maintenance.jpg">
                       <span className="services-slide__eyebrow">05 / Tree Care</span>
                       <h3 className="services-slide__title">Tree &amp; Bush Maintenance</h3>
                       <p className="services-slide__desc">Professional trimming, pruning, and shaping for trees and bushes. Right cuts at the right time of year &mdash; healthier plants, cleaner yard, no mess left behind.</p>
                       <a href="#booking" className="services-slide__cta"><span>Get a Quote</span></a>
                     </div>
-                    <div className="services-slide__media">
-                      <img src="/photos/service-tree-maintenance.jpg" alt="Tree and Bush Maintenance" loading="lazy" />
-                    </div>
-                  </div>
-                </div>
-                <div className="services-slide" data-slide="5">
-                  <div className="services-slide__inner">
-                    <div className="services-slide__content">
+                    <div className="services-slide" data-slide="5" data-image="/photos/service-tree-removal.jpg">
                       <span className="services-slide__eyebrow">06 / Tree Care</span>
                       <h3 className="services-slide__title">Tree Removal</h3>
                       <p className="services-slide__desc">Safe, efficient removal of unwanted or problem trees of any size. We handle the cut, the cleanup, and the haul-away &mdash; leaving your yard ready for what&rsquo;s next.</p>
                       <a href="#booking" className="services-slide__cta"><span>Get a Quote</span></a>
                     </div>
-                    <div className="services-slide__media">
-                      <img src="/photos/service-tree-removal.jpg" alt="Tree Removal" loading="lazy" />
-                    </div>
-                  </div>
-                </div>
-                <div className="services-slide" data-slide="6">
-                  <div className="services-slide__inner">
-                    <div className="services-slide__content">
+                    <div className="services-slide" data-slide="6" data-image="/photos/service-stump-removal.jpg">
                       <span className="services-slide__eyebrow">07 / Tree Care</span>
                       <h3 className="services-slide__title">Stump Removal</h3>
                       <p className="services-slide__desc">Grind down old stumps below grade so you can replant, lay turf, or just reclaim the space. Fast, mess-free, and ready for whatever comes next.</p>
                       <a href="#booking" className="services-slide__cta"><span>Get a Quote</span></a>
-                    </div>
-                    <div className="services-slide__media">
-                      <img src="/photos/service-stump-removal.jpg" alt="Stump Removal" loading="lazy" />
                     </div>
                   </div>
                 </div>
@@ -411,15 +372,41 @@ to {transform: scaleX(1);}}@keyframes bounce {0%,20%,50%,80%,100% {transform: tr
     const prevBtn = document.getElementById("servicesPrev")
     const nextBtn = document.getElementById("servicesNext")
     const progressBar = document.getElementById("servicesProgress")
+    const flipcard = document.getElementById("servicesFlipcard")
+    const flipFront = document.getElementById("servicesFlipFront")
+    const flipBack = document.getElementById("servicesFlipBack")
+    const images = Array.from(slides).map((s) => s.getAttribute("data-image"))
+
+    // Pre-load every slide image so the flip never reveals an unloaded face.
+    images.forEach((src) => { if (src) { const i = new Image(); i.src = src } })
+
     let current = 0
+    let flipCount = 0
     let timer = null
     let progressTimer = null
-    const INTERVAL = 5000
+    let isFlipping = false
+    const INTERVAL = 6000
+    const FLIP_MS = 900
 
     const goTo = (i) => {
-      current = (i + slides.length) % slides.length
+      const target = ((i % slides.length) + slides.length) % slides.length
+      if (target === current) return
+      if (isFlipping) return
+      isFlipping = true
+      current = target
+
       slides.forEach((s, idx) => s.classList.toggle("is-active", idx === current))
       dots.forEach((d, idx) => d.classList.toggle("is-active", idx === current))
+
+      if (flipcard && flipFront && flipBack) {
+        flipCount++
+        const showingBackNext = flipCount % 2 === 1
+        const targetFace = showingBackNext ? flipBack : flipFront
+        targetFace.style.backgroundImage = "url(" + images[current] + ")"
+        flipcard.style.transform = "rotateY(" + (flipCount * 180) + "deg)"
+      }
+
+      setTimeout(() => { isFlipping = false }, FLIP_MS)
       restartProgress()
     }
 
