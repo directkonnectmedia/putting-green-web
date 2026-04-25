@@ -3384,7 +3384,7 @@
 }
 
 @media (max-width: 640px) {
-  .services-carousel { aspect-ratio: auto; min-height: 600px; }
+  .services-carousel { aspect-ratio: auto; height: clamp(560px, 150vw, 720px); max-height: none; }
   .services-carousel__split { grid-template-rows: 38% 62%; }
   .services-slide { padding: 1.5rem 1.25rem 4.5rem; }
   .services-slide__cta { padding: 0.8rem 1.4rem; font-size: 0.85rem; }
