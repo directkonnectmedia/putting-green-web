@@ -6,6 +6,10 @@ const SERVICES = [
   { value: 'putting-green', label: 'Backyard Putting Green', desc: 'Custom synthetic golf greens' },
   { value: 'synthetic-grass', label: 'Synthetic Grass', desc: 'American-made, pet & kid friendly' },
   { value: 'gravel', label: 'Gravel Installation', desc: 'Driveways, yards & landscape beds' },
+  { value: 'pavers', label: 'Pavers', desc: 'Driveways, walkways & patios' },
+  { value: 'tree-maintenance', label: 'Tree & Bush Maintenance', desc: 'Trimming, pruning & shaping' },
+  { value: 'tree-removal', label: 'Tree Removal', desc: 'Cut down & haul away any size' },
+  { value: 'stump-removal', label: 'Stump Removal', desc: 'Grind stumps below grade' },
   { value: 'other', label: 'Something Else', desc: 'Tell us what you need' },
 ]
 
@@ -78,6 +82,75 @@ const GV_DELIVERY = [
   { v: 'delivery-install', l: 'Delivery + spread/install' },
 ]
 
+const PV_APPLICATION = [
+  { v: 'driveway', l: 'Driveway' },
+  { v: 'walkway', l: 'Walkway' },
+  { v: 'patio', l: 'Patio' },
+  { v: 'pool-deck', l: 'Pool deck' },
+  { v: 'other', l: 'Other' },
+]
+const PV_AREA = [
+  { v: 'lt-200', l: 'Under 200 sq ft' },
+  { v: '200-500', l: '200\u2013500 sq ft' },
+  { v: '500-1000', l: '500\u20131,000 sq ft' },
+  { v: 'gt-1000', l: 'Over 1,000 sq ft' },
+  { v: 'unsure', l: 'Not sure' },
+]
+const PV_EXISTING = [
+  { v: 'dirt', l: 'Bare dirt' },
+  { v: 'concrete', l: 'Concrete' },
+  { v: 'old-pavers', l: 'Old pavers' },
+  { v: 'grass', l: 'Grass' },
+  { v: 'gravel', l: 'Gravel' },
+]
+
+const TM_COUNT = [
+  { v: '1', l: '1 tree/bush' },
+  { v: '2-5', l: '2\u20135' },
+  { v: '6-10', l: '6\u201310' },
+  { v: '10+', l: '10+' },
+]
+const TM_TYPE = [
+  { v: 'trim', l: 'Trim back' },
+  { v: 'prune', l: 'Prune for health' },
+  { v: 'shape', l: 'Shape / topiary' },
+  { v: 'mix', l: 'A mix of these' },
+]
+const TM_SCOPE = [
+  { v: 'trees', l: 'Trees only' },
+  { v: 'bushes', l: 'Bushes only' },
+  { v: 'both', l: 'Both' },
+]
+
+const TR_COUNT = [
+  { v: '1', l: '1 tree' },
+  { v: '2-3', l: '2\u20133' },
+  { v: '4+', l: '4+' },
+]
+const TR_SIZE = [
+  { v: 'small', l: 'Small (under 15 ft)' },
+  { v: 'medium', l: 'Medium (15\u201330 ft)' },
+  { v: 'large', l: 'Large (30+ ft)' },
+  { v: 'unsure', l: 'Not sure' },
+]
+const TR_HAUL = [
+  { v: 'haul', l: 'Haul everything away' },
+  { v: 'leave-wood', l: 'Leave the wood' },
+  { v: 'unsure', l: 'Not sure' },
+]
+
+const SR_COUNT = [
+  { v: '1', l: '1 stump' },
+  { v: '2-3', l: '2\u20133' },
+  { v: '4+', l: '4+' },
+]
+const SR_SIZE = [
+  { v: 'small', l: 'Small (under 12")' },
+  { v: 'medium', l: 'Medium (12\u201324")' },
+  { v: 'large', l: 'Large (24"+)' },
+  { v: 'unsure', l: 'Not sure' },
+]
+
 const TIMELINE = [
   { v: 'asap', l: 'As soon as possible' },
   { v: '1-month', l: 'Within 1 month' },
@@ -145,6 +218,14 @@ export default function BookingWizard() {
     // Gravel
     gv_color: '', gv_size: '', gv_application: '', gv_quantity: '',
     gv_removal: '', gv_delivery: '',
+    // Pavers
+    pv_application: '', pv_area: '', pv_existing: '',
+    // Tree & bush maintenance
+    tm_count: '', tm_type: '', tm_scope: '',
+    // Tree removal
+    tr_count: '', tr_size: '', tr_haul: '',
+    // Stump removal
+    sr_count: '', sr_size: '',
     // Other (freeform)
     other_desc: '',
     // Project
@@ -216,6 +297,33 @@ export default function BookingWizard() {
       if (data.gv_removal) lines.push(`Existing rock/grass to remove: ${labelFor(YES_NO, data.gv_removal)}`)
       if (data.gv_delivery) lines.push(`Service: ${labelFor(GV_DELIVERY, data.gv_delivery)}`)
       if (lines.length) blocks.push(`GRAVEL\n${lines.map((l) => `- ${l}`).join('\n')}`)
+    }
+    if (has('pavers')) {
+      const lines = []
+      if (data.pv_application) lines.push(`Application: ${labelFor(PV_APPLICATION, data.pv_application)}`)
+      if (data.pv_area) lines.push(`Approximate area: ${labelFor(PV_AREA, data.pv_area)}`)
+      if (data.pv_existing) lines.push(`Existing surface: ${labelFor(PV_EXISTING, data.pv_existing)}`)
+      if (lines.length) blocks.push(`PAVERS\n${lines.map((l) => `- ${l}`).join('\n')}`)
+    }
+    if (has('tree-maintenance')) {
+      const lines = []
+      if (data.tm_count) lines.push(`How many: ${labelFor(TM_COUNT, data.tm_count)}`)
+      if (data.tm_type) lines.push(`Type of work: ${labelFor(TM_TYPE, data.tm_type)}`)
+      if (data.tm_scope) lines.push(`Scope: ${labelFor(TM_SCOPE, data.tm_scope)}`)
+      if (lines.length) blocks.push(`TREE & BUSH MAINTENANCE\n${lines.map((l) => `- ${l}`).join('\n')}`)
+    }
+    if (has('tree-removal')) {
+      const lines = []
+      if (data.tr_count) lines.push(`How many: ${labelFor(TR_COUNT, data.tr_count)}`)
+      if (data.tr_size) lines.push(`Tree size: ${labelFor(TR_SIZE, data.tr_size)}`)
+      if (data.tr_haul) lines.push(`Cleanup: ${labelFor(TR_HAUL, data.tr_haul)}`)
+      if (lines.length) blocks.push(`TREE REMOVAL\n${lines.map((l) => `- ${l}`).join('\n')}`)
+    }
+    if (has('stump-removal')) {
+      const lines = []
+      if (data.sr_count) lines.push(`How many: ${labelFor(SR_COUNT, data.sr_count)}`)
+      if (data.sr_size) lines.push(`Stump size: ${labelFor(SR_SIZE, data.sr_size)}`)
+      if (lines.length) blocks.push(`STUMP REMOVAL\n${lines.map((l) => `- ${l}`).join('\n')}`)
     }
     if (has('other') && data.other_desc.trim()) {
       blocks.push(`OTHER\n- ${data.other_desc.trim()}`)
@@ -503,6 +611,96 @@ export default function BookingWizard() {
                           options={GV_DELIVERY}
                           value={data.gv_delivery}
                           onChange={(v) => setField('gv_delivery', v)}
+                        />
+                      </section>
+                    )}
+
+                    {has('pavers') && (
+                      <section className="bw-detail-section">
+                        <h4 className="bw-detail-heading">Pavers</h4>
+                        <OptionGroup
+                          label="Application"
+                          options={PV_APPLICATION}
+                          value={data.pv_application}
+                          onChange={(v) => setField('pv_application', v)}
+                        />
+                        <OptionGroup
+                          label="Approximate area"
+                          options={PV_AREA}
+                          value={data.pv_area}
+                          onChange={(v) => setField('pv_area', v)}
+                        />
+                        <OptionGroup
+                          label="Existing surface"
+                          options={PV_EXISTING}
+                          value={data.pv_existing}
+                          onChange={(v) => setField('pv_existing', v)}
+                        />
+                      </section>
+                    )}
+
+                    {has('tree-maintenance') && (
+                      <section className="bw-detail-section">
+                        <h4 className="bw-detail-heading">Tree &amp; Bush Maintenance</h4>
+                        <OptionGroup
+                          label="How many trees / bushes?"
+                          options={TM_COUNT}
+                          value={data.tm_count}
+                          onChange={(v) => setField('tm_count', v)}
+                        />
+                        <OptionGroup
+                          label="Type of work"
+                          options={TM_TYPE}
+                          value={data.tm_type}
+                          onChange={(v) => setField('tm_type', v)}
+                        />
+                        <OptionGroup
+                          label="Scope"
+                          options={TM_SCOPE}
+                          value={data.tm_scope}
+                          onChange={(v) => setField('tm_scope', v)}
+                        />
+                      </section>
+                    )}
+
+                    {has('tree-removal') && (
+                      <section className="bw-detail-section">
+                        <h4 className="bw-detail-heading">Tree Removal</h4>
+                        <OptionGroup
+                          label="How many trees?"
+                          options={TR_COUNT}
+                          value={data.tr_count}
+                          onChange={(v) => setField('tr_count', v)}
+                        />
+                        <OptionGroup
+                          label="Tree size"
+                          options={TR_SIZE}
+                          value={data.tr_size}
+                          onChange={(v) => setField('tr_size', v)}
+                        />
+                        <OptionGroup
+                          label="Cleanup"
+                          options={TR_HAUL}
+                          value={data.tr_haul}
+                          onChange={(v) => setField('tr_haul', v)}
+                        />
+                      </section>
+                    )}
+
+                    {has('stump-removal') && (
+                      <section className="bw-detail-section">
+                        <h4 className="bw-detail-heading">Stump Removal</h4>
+                        <OptionGroup
+                          label="How many stumps?"
+                          options={SR_COUNT}
+                          value={data.sr_count}
+                          onChange={(v) => setField('sr_count', v)}
+                        />
+                        <OptionGroup
+                          label="Stump size"
+                          options={SR_SIZE}
+                          value={data.sr_size}
+                          onChange={(v) => setField('sr_size', v)}
                         />
                       </section>
                     )}

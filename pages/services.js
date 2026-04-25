@@ -25,6 +25,30 @@ const SERVICES = [
     description:
       'Professional gravel for driveways, yards, and landscape beds. We carry multiple sizes \u2014 \u00bc\u201d fine, \u215c\u201d, \u00bd\u201d, and \u00be\u201d for driveways \u2014 in a full range of colors including gray, beige, red, and decorative mixes. Delivery and installation available. Affordable local service throughout the Phoenix area.',
   },
+  {
+    title: 'Paver Driveways & Walkways',
+    image: '/photos/service-pavers.png',
+    description:
+      'Custom paver work that transforms the front and back of your home. Driveways, walkways, patios, and pool decks built with proper base prep, level joints, and clean edges so they hold up to the Phoenix sun for years. We help you pick patterns and colors that match your home, then install it right the first time.',
+  },
+  {
+    title: 'Tree & Bush Maintenance',
+    image: '/photos/service-tree-maintenance.jpg',
+    description:
+      'Healthy trees and tidy bushes start with the right cuts at the right time of year. We trim, prune, and shape trees and shrubs to keep them strong, safe, and looking their best. From a single overgrown tree to a full yard of shrubs, we leave the work clean and the green debris hauled away.',
+  },
+  {
+    title: 'Tree Removal',
+    image: '/photos/service-tree-removal.jpg',
+    description:
+      'Safe, efficient removal of dead, damaged, or unwanted trees \u2014 any size, any access. We handle the felling, the cleanup, and the haul-away. If a tree is too close to the house, leaning the wrong way, or just no longer fits the yard, we&apos;ll take it down without taking down anything else.',
+  },
+  {
+    title: 'Stump Removal',
+    image: '/photos/service-stump-removal.jpg',
+    description:
+      'Old stumps trip people, attract termites, and get in the way of new landscaping. We grind stumps down below grade so you can replant grass, lay turf, pour concrete, or just reclaim the space. Fast, mess-free, and one less eyesore in the yard.',
+  },
 ]
 
 export default function ServicesPage() {
@@ -35,7 +59,7 @@ export default function ServicesPage() {
         <meta property="og:title" content={`Services — ${SITE.brand.name}`} />
         <meta
           name="description"
-          content="Custom backyard putting greens, synthetic grass, and gravel installation. American-made turf. Pet and kid friendly. Serving Phoenix, AZ and surrounding areas."
+          content="Putting greens, synthetic grass, gravel, paver driveways, tree trimming, tree removal, and stump grinding. One local crew serving Phoenix, AZ and surrounding areas."
         />
       </Head>
       <div className="sv-page">
@@ -45,7 +69,7 @@ export default function ServicesPage() {
           <div className="sv-container">
             <header className="sv-header">
               <p className="sv-eyebrow">{`WHY ${SITE.brand.name.toUpperCase()}?`}</p>
-              <h1 className="sv-heading">Premium Synthetic Turf &amp; Hardscape</h1>
+              <h1 className="sv-heading">Turf, Hardscape &amp; Tree Service</h1>
             </header>
 
             <div className="sv-rows">

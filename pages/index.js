@@ -140,6 +140,42 @@ const Home = (props) => {
                     <a href="#booking" className="services-slide__cta"><span>Get a Quote</span></a>
                   </div>
                 </div>
+                <div className="services-slide" data-slide="3" style={{ backgroundImage: "url(/photos/service-pavers.png)" }}>
+                  <div className="services-slide__overlay"></div>
+                  <div className="services-slide__content">
+                    <span className="services-slide__eyebrow">04 / Hardscape</span>
+                    <h3 className="services-slide__title">Paver Driveways &amp; Walkways</h3>
+                    <p className="services-slide__desc">Custom paver driveways, walkways, and patios that boost curb appeal and stand up to the Phoenix sun. Clean lines, level joints, and a finish built to last.</p>
+                    <a href="#booking" className="services-slide__cta"><span>Get a Quote</span></a>
+                  </div>
+                </div>
+                <div className="services-slide" data-slide="4" style={{ backgroundImage: "url(/photos/service-tree-maintenance.jpg)" }}>
+                  <div className="services-slide__overlay"></div>
+                  <div className="services-slide__content">
+                    <span className="services-slide__eyebrow">05 / Tree Care</span>
+                    <h3 className="services-slide__title">Tree &amp; Bush Maintenance</h3>
+                    <p className="services-slide__desc">Professional trimming, pruning, and shaping for trees and bushes. Right cuts at the right time of year &mdash; healthier plants, cleaner yard, no mess left behind.</p>
+                    <a href="#booking" className="services-slide__cta"><span>Get a Quote</span></a>
+                  </div>
+                </div>
+                <div className="services-slide" data-slide="5" style={{ backgroundImage: "url(/photos/service-tree-removal.jpg)" }}>
+                  <div className="services-slide__overlay"></div>
+                  <div className="services-slide__content">
+                    <span className="services-slide__eyebrow">06 / Tree Care</span>
+                    <h3 className="services-slide__title">Tree Removal</h3>
+                    <p className="services-slide__desc">Safe, efficient removal of unwanted or problem trees of any size. We handle the cut, the cleanup, and the haul-away &mdash; leaving your yard ready for what&rsquo;s next.</p>
+                    <a href="#booking" className="services-slide__cta"><span>Get a Quote</span></a>
+                  </div>
+                </div>
+                <div className="services-slide" data-slide="6" style={{ backgroundImage: "url(/photos/service-stump-removal.jpg)" }}>
+                  <div className="services-slide__overlay"></div>
+                  <div className="services-slide__content">
+                    <span className="services-slide__eyebrow">07 / Tree Care</span>
+                    <h3 className="services-slide__title">Stump Removal</h3>
+                    <p className="services-slide__desc">Grind down old stumps below grade so you can replant, lay turf, or just reclaim the space. Fast, mess-free, and ready for whatever comes next.</p>
+                    <a href="#booking" className="services-slide__cta"><span>Get a Quote</span></a>
+                  </div>
+                </div>
               </div>
               <button id="servicesNext" aria-label="Next service" className="services-carousel__nav services-carousel__nav--next">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
@@ -148,6 +184,10 @@ const Home = (props) => {
                 <button data-dot="0" className="services-carousel__dot is-active" aria-label="Go to service 1"></button>
                 <button data-dot="1" className="services-carousel__dot" aria-label="Go to service 2"></button>
                 <button data-dot="2" className="services-carousel__dot" aria-label="Go to service 3"></button>
+                <button data-dot="3" className="services-carousel__dot" aria-label="Go to service 4"></button>
+                <button data-dot="4" className="services-carousel__dot" aria-label="Go to service 5"></button>
+                <button data-dot="5" className="services-carousel__dot" aria-label="Go to service 6"></button>
+                <button data-dot="6" className="services-carousel__dot" aria-label="Go to service 7"></button>
               </div>
               <div className="services-carousel__progress"><div id="servicesProgress" className="services-carousel__progress-bar"></div></div>
             </div>
@@ -179,13 +219,13 @@ const Home = (props) => {
                 THE PUTTING GREEN DIFFERENCE
               </motion.span>
               <motion.h2 variants={fadeUp} className="home-section-title section-title">
-                Premium Synthetic Turf Built for Phoenix
+                One Crew for Your Whole Backyard
               </motion.h2>
               <motion.p variants={fadeUp} className="why-description section-content">
-                We install custom putting greens, synthetic lawns, and gravel
-                with high-quality, American-made materials that hold up to the
-                Arizona sun. Clean work, fair pricing, and yards that stay
-                beautiful year-round &mdash; pet-safe and kid-safe by default.
+                Putting greens, synthetic turf, gravel, paver driveways, tree
+                trimming, tree removal, and stump grinding &mdash; one local
+                team for the whole job. Clean work, fair pricing, and yards
+                that stay beautiful year-round.
               </motion.p>
               <motion.div
                 className="trust-points"
@@ -298,8 +338,8 @@ const Home = (props) => {
               </h2>
               <p className="cta-text section-content">
                 Join Phoenix homeowners who trust {SITE.brand.name} for
-                custom putting greens, synthetic lawns, and professional
-                gravel installation.
+                custom putting greens, synthetic lawns, gravel, pavers, and
+                full tree care &mdash; all from one local crew.
               </p>
               <div className="cta-divider"></div>
               <div className="cta-buttons">
